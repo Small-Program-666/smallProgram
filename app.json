@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/statistics/statistics",
+    "pages/users/users"
+  ],
+  "window": {
+    "navigationBarBackgroundColor":"#F0FFF0",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "记账小管家",
+    "backgroundColor": "#E6E6FA",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志"
+      },
+      {
+        "pagePath": "pages/users/users",
+        "text": "用户中心"
+      }
+    ],
+    "selectedColor": "#CDAA7D",
+    "backgroundColor": "#F0FFF0",
+    "borderStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap12.json"
+}

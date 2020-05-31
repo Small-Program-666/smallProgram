@@ -1,0 +1,6 @@
+<!--logs.wxml-->
+<view>
+  <button class="add" bindtap="jumpToIndex">
+    <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
+  </button>
+</view>

@@ -1,0 +1,13 @@
+/**app.wxss**/
+/**样式文件**/
+/**遵循css语法，单位上稍微高级些**/
+/**用于定义页面样式，直接定义全局共享、公用样式**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 

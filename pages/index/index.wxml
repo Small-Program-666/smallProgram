@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<!--基于xml的微信标记语言，定义页面结构-->
+<!---->
+<view class="container">
+  <image class="backg" src="../index/03.jpg"></image>
+  <view class="addOne">
+    <button wx:if="{{ incomeOrNot==0 }}" class="income" style="background-color:rgb(255,255,240)" bindtap="changeToIncome">收入</button>
+    <button wx:if="{{ incomeOrNot==1 }}" class="income" style="background-color:rgb(252, 218, 170)" bindtap="changeToIncome">收入</button>
+    <button wx:if="{{ outcomeOrNot==0 }}" class="outcome" style="background-color:rgb(255,255,240)" bindtap="changeToOutcome">支出</button>
+    <button wx:if="{{ outcomeOrNot==1 }}" class="outcome" style="background-color:rgb(252, 218, 170)" bindtap="changeToOutcome">支出</button>
+    <view class="total-view"></view>
+    <view class="amount-view"></view>
+    <view class="amount">金额：</view>
+    <view class="amount-input">
+      <input class="amount_input" type="digit" auto-focus placeholder="请输入数值" bindinput="inputAmount"></input>
+    </view>
+    <view>
+      <view class="type-view"></view>
+      <text class="type">类型：</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">{{ array[index] }}</view>
+      </picker>
+    </view>
+     <view class="date-view">
+      <text class="date">日期：</text>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="date-picker">{{date}}</view>
+      </picker>
+    </view>
+    <view class="remark-view"></view>
+    <view class="remark">备注：</view>
+    <view class="remark-input">
+      <input class="remark_input" type="text" placeholder="请输入文本" bindinput="inputRemark"></input>
+    </view>
+    <button class="handmit" bindtap="handleSubmit">提交</button>
+  </view>
+  <view>
+    <text class="encourage">此处放鼓励的话</text>
+  </view>
+</view>
