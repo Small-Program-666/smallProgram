@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/statistics/statistics",
+    "pages/users/users"
+  ],
+  "window": {
+    "navigationBarBackgroundColor":"#F0FFF0",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "记账小管家",
+    "backgroundColor": "#E6E6FA",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "记一笔",
+        "iconPath":"../小程序/pages/index/12.png",
+        "selectedIconPath":"../小程序/pages/index/11.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath":"../小程序/pages/index/02.png",
+        "selectedIconPath":"../小程序/pages/index/01.png"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计",
+        "iconPath":"../小程序/pages/index/22.png",
+        "selectedIconPath":"../小程序/pages/index/21.png"
+      },
+      {
+        "pagePath": "pages/users/users",
+        "text": "用户中心",
+        "iconPath":"../小程序/pages/index/32.png",
+        "selectedIconPath":"../小程序/pages/index/31.png"
+      }
+    ],
+    "selectedColor": "#CDAA7D",
+    "backgroundColor": "#F0FFF0"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap12.json"
+}

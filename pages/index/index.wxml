@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<!--基于xml的微信标记语言，定义页面结构-->
+<!---->
+<view class="container">
+  <image class="backg" src="../index/05.png"></image>
+  <view class="addOne">
+    <button class="income">收入</button>
+    <button class="outcome">支出</button>
+    <view class="total-view"></view>
+    <view class="amount-view"></view>
+    <view class="amount">金额：</view>
+    <view class="amount-input">
+      <input class="amount_input" type="digit" auto-focus placeholder="请输入数值"></input>
+    </view>
+    <view>
+      <view class="type-view"></view>
+      <text class="type">类型：</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">{{ array[index] }}</view>
+      </picker>
+    </view>
+    <view class="remark-view"></view>
+    <view class="remark">备注：</view>
+    <view class="remark-input">
+      <input class="remark_input" type="text" auto-focus placeholder="请输入文本"></input>
+    </view>
+    <button class="handmit">提交</button>
+  </view>
+  <view>
+   <text class="count">今日支出总计：0</text>
+   <text class="undefine">后端尚未实现无法统计,页面够大所以可以分类统计</text>
+  </view>
+  <view>
+    <text class="encourage">此处放鼓励的话</text>
+  </view>
+</view>
