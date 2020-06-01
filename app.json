@@ -16,21 +16,28 @@
   "tabBar": {
     "list": [
       {
+        "iconPath": "images/calendar1.png",
+        "selectedIconPath": "images/calendar.png",
+        "pagePath": "pages/logs/logs",
+        "text": "账户"
+      },
+      {
+        "iconPath": "images/data1.png",
+        "selectedIconPath": "images/data.png",
         "pagePath": "pages/statistics/statistics",
         "text": "统计"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
-      },
-      {
+        "iconPath": "images/bussiness-man1.png",
+        "selectedIconPath": "images/bussiness-man.png",
         "pagePath": "pages/users/users",
-        "text": "用户中心"
+        "text": "我的"
       }
     ],
-    "selectedColor": "#CDAA7D",
-    "backgroundColor": "#F0FFF0",
-    "borderStyle": "white"
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "backgroundColor": "#F0FFF0"
   },
   "networkTimeout": {
     "request": 10000,
