@@ -1,0 +1,75 @@
+<!--pages/logs/details.wxml-->
+<view class='head'>
+  <view class='head-left'>
+    <view class='iconfont-box headimg'><!--获取detailtagbackground功能 style='background-color: {{detail.tagbg}}'-->
+      <label class='icon'></label><!-- class='iconfont {{detail.tagimg}}'-->
+      <image src="/images/consumption.png"></image>
+    </view>
+  </view>  
+  <view class='head-right'>
+    <view class='headtagname'>
+      交通<!--获取{{detail.tag}}-->
+    </view>
+    <view class='headmoney'>
+      0.00<!--获取{{detail.money}}-->
+    </view>
+  </view>
+</view>
+
+<view class='divline'></view>
+
+<view class='detail'>
+<view class='detail-item'>
+    <view class='detail-item-left'>
+      类型
+    </view>
+    <view class='detail-item-right'>
+      支出<!--{{detail.type}}-->
+    </view>
+  </view>
+  <view class='detail-item'>
+    <view class='detail-item-left'>
+      金额
+    </view>
+    <view class='detail-item-right'>
+      0.00<!--{{detail.money}}-->
+    </view>
+  </view>
+  <view class='detail-item'>
+    <view class='detail-item-left'>
+      账户
+    </view>
+    <view class='detail-item-right'>
+      啥<!--{{detail.cardname}}-->
+    </view>
+  </view>
+  <view class='detail-item'>
+    <view class='detail-item-left'>
+      记录时间
+    </view>
+    <view class='detail-item-right'>
+      2020-05-31 12:54:19<!--{{detail.createtime}}-->
+    </view>
+  </view>
+  <view class='detail-item'>
+    <view class='detail-item-left'>
+      备注
+    </view>
+    <view class='detail-item-right'>
+      <!--{{mdetail.remark}}-->
+    </view>
+  </view>
+</view>
+
+<view class='content btnbox'>
+  <view class='btnitem1'>
+    <button bindtap="delwater" class='btnsive' hover-class="btnsive-hover" data-id='{{detail.id}}'>
+      删除
+    </button>
+  </view>
+  <view class='btnitem2'>
+    <button bindtap="updatewater" class='btnsive' hover-class="btnsive-hover" data-detail='{{detail}}'>
+      编辑<!--updatewater待实现-->
+    </button>
+  </view>
+</view>

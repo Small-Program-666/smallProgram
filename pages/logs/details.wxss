@@ -1,0 +1,70 @@
+/* pages/logs/details.wxss */
+.head{
+  height: 60px;
+  line-height: 60px;
+  clear: both;
+  vertical-align: middle;  
+}
+.head-left{
+  float: left;
+  width: 17%;
+}
+.headimg{
+  margin: 10px 10px 0;
+}
+.head-left image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.head-right{
+  float: left;
+  width: 83%;
+}
+.headtagname{
+  float: left;
+}
+.headmoney {
+  float: right;
+  padding-right: 10px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.divline{
+  background-color: lightgrey;
+  height: 5px;
+  width: 100%;
+}
+
+.detail {
+  padding: 10px 10px;
+}
+.detail-item {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.detail-item-left{
+  float: left;
+}
+.detail-item-right{
+  float: right;
+}
+
+.btnbox {
+  clear: both;
+  margin-top: 20px;
+}
+
+.btnitem1 {
+  width: 45%;
+  text-align: center;
+  float: left;
+  margin-left: 15px;
+}
+
+.btnitem2 {
+  width: 45%;
+  text-align: center;
+  float: left;
+}
