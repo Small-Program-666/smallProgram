@@ -138,5 +138,10 @@ Page({
       // 获取 chart 实例的方式
       // console.log(chart)
     }, 2000);
+  },
+  jumpToIndex: function(){
+    wx.navigateTo({
+      url: '../index/index',
+    })
   }
 });

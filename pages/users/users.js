@@ -233,5 +233,10 @@ Page({
       })
     }
   },
+  jumpToIndex: function(){
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  }
 })
 
