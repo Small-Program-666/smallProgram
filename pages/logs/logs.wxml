@@ -4,3 +4,71 @@
     <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
   </button>
 </view>
+
+<view class='showflow'>
+  <view class='showbox' style='height: 140px;color:black;'>
+    <view class='showbox-top'>
+      <view class='st-money' bindtap="setBudget"><!--加一个点击设置预算功能-->
+        <label class='st-money-box'>{{jieyu}}</label>   
+      </view>
+      <view class='st-tag'>
+        <picker class="rili-box" mode="date" fields="month" value='{{yearmonthstr}}' bindchange="sltyearmonth">
+          <label class='st-tag-box' style='border: 1px solid {{homecolor}};'>
+            {{yearmonth}} 预算结余
+          </label>
+        </picker>
+      </view>
+    </view>
+    <view class='showbox-bottom'>
+      <view class='sd-item'>
+        <view class='sd-item-num'>
+          {{sumin}}                      
+        </view>
+        <view class='sd-item-lable'>本月收入</view>
+      </view>
+      <view class='sd-item'>
+        <view class='sd-item-num'>
+         {{sumout}}                      
+        </view>
+        <view class='sd-item-lable'>本月支出</view>
+      </view>
+    </view>
+  </view>
+  <view class='showflow-empty'>
+    <view class='empty' style='display:{{flowable}}'>
+      <!--无记录时显示图片提示重新选择月份-->
+      <!--image src='/pages/image/空白.jpg'></image-->
+      <text>本月无记录，请重新选择月份~</text>
+    </view>
+  </view>
+  <scroll-view scroll-y='true' class='showflow-main' style='height: {{scrollHeight}}px;' bindscrolltolower='searchScrollLower' bindscrolltoupper="bindscrolltoupper">
+    <view class='showflow-total-list' ><!--遍历list的功能wx:for="{{list}}" wx:key="date" wx:for-index="groupindex"-->
+      <view class='dailytag'>
+        <view class='dailytag-date'>2020-05-31</view><!--{{item.date}}-->
+        <view class='dailytag-inout'>收入：0.00 支出：0.00</view><!--{{item.dayin}}{{item.dayout}}-->
+      </view>
+      <view class='dailylist'><!--遍历单日list功能  wx:for="{{item.mwters}}" wx:key="id" wx:for-item="cell" wx:for-index="cellindex"-->
+        <view bindtap='waterdetail'><!--点击记录获取details功能 data-id='{{cell.id}}'-->
+          <view class='dlitem-left'>
+            <view class='iconfont-box dlitemimg'><!--获取celltagbackground功能 style='background-color: {{cell.tagbg}}'-->
+              <label class='icon'></label><!-- class='iconfont {{cell.tagimg}}'-->
+              <image src="/images/consumption.png"></image>
+            </view>
+          </view>
+          <view class='dlitem-right'>
+            <view class='dlitem-tagname'>
+              交通
+              <!--获取cell.tag的功能{{cell.tag}}-->
+              <label class='dlitem-tagremark'>备注</label><!--{{cell.remark}}备注-->
+            </view>
+            <view class='dlitem-money'>
+              0.00<!--{{cell.money}}-->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+
+</view>

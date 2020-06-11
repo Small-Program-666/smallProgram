@@ -3,10 +3,11 @@
     "pages/logs/logs",
     "pages/index/index",
     "pages/statistics/statistics",
-    "pages/users/users"
+    "pages/users/users",
+    "pages/logs/details"
   ],
   "window": {
-    "navigationBarBackgroundColor":"#F0FFF0",
+    "navigationBarBackgroundColor": "#F0FFF0",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "记账小管家",
     "backgroundColor": "#E6E6FA",

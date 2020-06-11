@@ -20,3 +20,155 @@
   left: 330rpx;
   bottom: 0rpx;
 }
+
+
+.content {
+  padding: 0 5px;
+}
+
+.showflow{
+  overflow: hidden;
+}
+
+.timebox {
+  position: absolute;
+  left: 30rpx;
+  top: 30rpx;
+}
+
+.timebox .yearmonth {
+  font-size: 30rpx;
+  padding: 0 8rpx;
+  background-color: #64a594;
+  border-radius: 6rpx;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.showbox {
+  /* height: 150px; *//* background: url('https://tooapi.tooao.cn/images/2.jpg') no-repeat;
+  background-size: 100% 100%; */
+  background-color: #f7b2c4;
+  color: #fff;
+  clear: both;
+  width: 100%;
+  z-index: 100;
+  /* background-color: rgba(255,255,255,.5); */
+}
+
+.showbox-top {
+  text-align: center;
+}
+
+.st-money {
+  font-size: 2rem;
+  font-family: 'KaiTi';
+  padding: 30rpx 0 10rpx;
+}
+
+.st-money-box image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.st-tag {
+  font-size: 0.8rem;
+  margin-top: 10rpx;
+}
+
+.st-tag-box{
+  border-radius: 50rpx;
+  padding: 5rpx 20rpx;
+}
+
+.st-tag-box image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.showbox-bottom {
+  margin-top: 35rpx;
+}
+
+.sd-item {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.showflow-main{
+  min-height: 200px;
+  clear: both;
+}
+
+.showflow-total-list{
+  clear: both;
+}
+
+.dailytag {
+  background-color: #f8fafc;
+  height: 25px;
+  line-height: 25px;
+  font-size: 13px;
+  color: #959595;
+}
+.dailytag-date{
+  float:left;
+  margin-left: 10px;
+}
+.dailytag-inout{
+  float:right;
+  margin-right: 10px;
+}
+
+.dailylist {
+  height: 120rpx;
+  line-height: 120rpx;
+  clear: both;
+  vertical-align: middle;
+}
+
+.dlitem-left {
+  float: left;
+  /* padding: 8px 10px 0; */
+  width: 17%;
+  /* text-align: center; */
+}
+.dlitemimg {
+  /*background-color: #f6c142;*/
+  margin: 8px 10px 0;
+}
+.dlitemimg image {
+  width: 40px;
+  height: 40px;
+}
+
+.dlitem-right {
+  width: 83%;
+  float: left;
+  /* margin-right: 10px; *//* background-color: #f0f0f0;  */
+  border-bottom: 0.5px solid #ededed;
+}
+.dlitem-tagname {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 400rpx;
+  color: #959595;
+}
+.dlitem-tagremark {
+  color: #959595;
+  font-size: 13px;
+}
+.dlitem-money {
+  float: right;
+  padding-right: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  width: 200rpx;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
