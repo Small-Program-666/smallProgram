@@ -5,13 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bdetail:{},
+    type:'',
+    inORout:'支出',
+    amount:0,
+    datetime:'',
+    remark:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      type:options.type,
+      amount:options.amount,
+      datetime:options.date+' '+options.time,
+      remark:options.remark,
+    })
+    if(options.inORout==0){
+      this.setData({inORout:'收入'})
+    }
+    else{ this.setData({inORout:'支出'})}
 
   },
 

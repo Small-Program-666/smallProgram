@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
@@ -16,7 +17,12 @@ Page({
     array: [],
     index: 0,
     remark:'',
-    date:'2020-05-28',//待完成初始化成今天
+    date:util.formatDate(new Date),
+    time:util.formatTime(new Date),
+    dayIn:0,
+    dayOut:0,
+    dailyb:[],
+    id:0,
   },
   onLoad: function() {
     this.setData({
@@ -61,12 +67,47 @@ Page({
       return;
     }
     var bills=wx.getStorageSync('bills')||[];
-    var bill={
+    var dailybills={
+      date:this.data.date,
+      dayIn:this.data.dayIn,
+      dayOut:this.data.dayOut,
+      dailyb:this.data.dailyb
+    }
+    
+    var bill={       //加了date,time,index（表示具体类别），type，把收入支出改成inORout了
+      id:this.data.id,
+      date:this.data.date,
+      time:util.formatTime(new Date),
       amount:this.data.amount,
-      type:this.data.type,
-      remark:this.data.remark
+      inORout:this.data.type,//0是income，1是outcome
+      remark:this.data.remark,
+      index:this.data.index,
+      type:this.data.arrays[this.data.type][this.data.index]
     };
-    bills.push(bill);
+    this.setData({
+      id:parseInt(this.data.id)+1,
+    })
+    var flag=true;
+    for(var i=0;bills[i]!=null;i++){
+       if(bills[i].date==bill.date){
+         bills[i].dailyb.push(bill);
+         if(bill.inORout==0){bills[i].dayIn=parseInt(bill.amount)+parseInt(bills[i].dayIn);}
+         else{bills[i].dayOut=parseInt(bill.amount)+parseInt(bills[i].dayOut);}
+         flag=false;
+       }
+    }
+    if(flag){
+      var dailybills={
+        date:this.data.date,
+        dayIn:0,
+        dayOut:0,
+        dailyb:[]
+      }
+      dailybills.dailyb.push(bill);
+      if(bill.inORout==0){dailybills.dayIn=bill.amount;}
+      else{dailybills.dayOut=bill.amount;}
+      bills.push(dailybills);
+    }
     wx.setStorageSync('bills',bills);
   },
 

@@ -1,9 +1,10 @@
 <!--logs.wxml-->
-<view>
+<!--view>
   <button class="add" bindtap="jumpToIndex">
     <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
   </button>
-</view>
+</view-->
+
 
 <view class='showflow'>
   <view class='showbox' style='height: 140px;color:black;'>
@@ -42,13 +43,13 @@
     </view>
   </view>
   <scroll-view scroll-y='true' class='showflow-main' style='height: {{scrollHeight}}px;' bindscrolltolower='searchScrollLower' bindscrolltoupper="bindscrolltoupper">
-    <view class='showflow-total-list' ><!--遍历list的功能wx:for="{{list}}" wx:key="date" wx:for-index="groupindex"-->
+    <view class='showflow-total-list' wx:for="{{list}}" wx:key="date" ><!--遍历list的功能wx:for="{{list}}" wx:key="date" wx:for-index="groupindex"-->
       <view class='dailytag'>
-        <view class='dailytag-date'>2020-05-31</view><!--{{item.date}}-->
-        <view class='dailytag-inout'>收入：0.00 支出：0.00</view><!--{{item.dayin}}{{item.dayout}}-->
+        <view class='dailytag-date'>{{item.date}}</view>
+        <view class='dailytag-inout'>收入：{{item.dayIn}} 支出：{{item.dayOut}}</view>
       </view>
-      <view class='dailylist'><!--遍历单日list功能  wx:for="{{item.mwters}}" wx:key="id" wx:for-item="cell" wx:for-index="cellindex"-->
-        <view bindtap='waterdetail'><!--点击记录获取details功能 data-id='{{cell.id}}'-->
+      <view class='dailylist' wx:for="{{item.dailyb}}" wx:key="time" wx:for-item="cell"><!--遍历单日list功能  wx:for="{{item.mwters}}" wx:key="id" wx:for-item="cell" wx:for-index="cellindex"-->
+        <view bindtap='waterdetail' data-cell='{{cell}}'>
           <view class='dlitem-left'>
             <view class='iconfont-box dlitemimg'><!--获取celltagbackground功能 style='background-color: {{cell.tagbg}}'-->
               <label class='icon'></label><!-- class='iconfont {{cell.tagimg}}'-->
@@ -57,12 +58,11 @@
           </view>
           <view class='dlitem-right'>
             <view class='dlitem-tagname'>
-              交通
-              <!--获取cell.tag的功能{{cell.tag}}-->
-              <label class='dlitem-tagremark'>备注</label><!--{{cell.remark}}备注-->
+              {{cell.type}}
+              <label class='dlitem-tagremark'>{{cell.remark}}</label>
             </view>
             <view class='dlitem-money'>
-              0.00<!--{{cell.money}}-->
+              {{cell.amount}}
             </view>
           </view>
         </view>
@@ -71,4 +71,8 @@
   </scroll-view>
 
 
+</view>
+
+<view class='add'>
+    <image class='add-pic' bindtap="jumpToIndex" src='/images/add2.jpg'></image>
 </view>
