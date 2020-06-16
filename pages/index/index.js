@@ -1,117 +1,140 @@
 //index.js
 //获取应用实例
-var util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
-
   data: {
-    amount: '',
-    type: 0,
-    incomeOrNot:0,
-    outcomeOrNot:0,
-    arrays: [
-      ['请选择','工资', '奖金', '兼职', '其它'],
-      ['请选择','购物', '吃喝', '日用品', '出行', '运动娱乐', '其它']
+    amount: "",
+    type: 0, //0为收入 1为支出
+    incomeOrNot: 1,
+    outcomeOrNot: 0,
+    //icon中为选中前图标和选中后
+    outcome: [
+      {
+        icon: ['../../images/icon/餐饮.png', '../../images/icon/餐饮1.png'],
+        type: '餐饮',
+        id: 0
+      },
+      {
+        icon: ['../../images/icon/交通.png', '../../images/icon/交通1.png'],
+        type: '出行',
+        id: 1
+      },
     ],
-    array: [],
-    index: 0,
-    remark:'',
-    date:util.formatDate(new Date),
-    time:util.formatTime(new Date),
-    dayIn:0,
-    dayOut:0,
-    dailyb:[],
-    id:0,
+    accountIndex: 0,//选择的账本index
+    income: [
+      {
+        icon:['../../images/icon/工资.png','../../images/icon/工资.png'],
+        type:'工资',
+        id:0
+      }
+    ],
+    selectIndex: 0,//选择的id
+    remark: '',
+    date: '2020-05-28',
+    currentType: '工资',//选择的Type
+    currentIcon: '../../images/icon/工资.png',
+    account: "支付宝",
+    idb: "back",
+    idc: "clear",
+    id9: "9",
+    id8: "8",
+    id7: "7",
+    id6: "6",
+    id5: "5",
+    id4: "4",
+    id3: "3",
+    id2: "2",
+    id1: "1",
+    id0: "0",
+    idd: ".",
+    ids: "保存",
+    numberOfDot: 0,
+    accounts: ["支付宝", "微信", "现金"]
   },
-  onLoad: function() {
+  onLoad: function () {
     this.setData({
-      array: this.data.arrays[this.data.type]
+      date: this.getCurrentDay(),
     })
   },
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      accountIndex: e.detail.value,
+      account: this.data.accounts[e.detail.value]
     })
   },
-
-  changeToIncome: function() {
-    console.log(1)
+  getCurrentDay: function () {
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    //获取年份  
+    var Y = date.getFullYear();
+    //获取月份  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //获取当日日期 
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    return Y + "-" + M + "-" + D;
+  },
+  getCurrentTime: function () {
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    var H = date.getHours();
+    var Min = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+    var Seconds = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    return H + ":" + Min + ":" + Seconds;
+  },
+  changeToIncome: function () {
     this.setData({
+      currentIcon: this.data.income[0].icon[1],
+      currentType: this.data.income[0].type,
       type: 0,
-      incomeOrNot:1,
-      outcomeOrNot:0,
-      array: this.data.arrays[0]
+      incomeOrNot: 1,
+      outcomeOrNot: 0,
     })
   },
-  changeToOutcome: function() {
+  changeToOutcome: function () {
     this.setData({
+      currentIcon:this.data.outcome[0].icon[1],
+      currentType:this.data.outcome[0].type,
       type: 1,
-      outcomeOrNot:1,
-      incomeOrNot:0,
-      array: this.data.arrays[1]
+      outcomeOrNot: 1,
+      incomeOrNot: 0,
     })
   },
 
-  inputAmount: function(e) {
+  inputAmount: function (e) {
     this.setData({
       amount: e.detail.value
     });
   },
 
-  handleSubmit: function(e) {
+  handleSubmit: function (e) {
     console.log(e)
-    if (!this.data.amount){
-      wx.showToast({ title: '请填写金额~', icon: 'none' });
+    if (!this.data.amount) {
+      wx.showToast({
+        title: '请填写金额~',
+        icon: 'none'
+      });
       return;
     }
-    var bills=wx.getStorageSync('bills')||[];
-    var dailybills={
-      date:this.data.date,
-      dayIn:this.data.dayIn,
-      dayOut:this.data.dayOut,
-      dailyb:this.data.dailyb
-    }
-    
-    var bill={       //加了date,time,index（表示具体类别），type，把收入支出改成inORout了
-      id:this.data.id,
-      date:this.data.date,
-      time:util.formatTime(new Date),
-      amount:this.data.amount,
-      inORout:this.data.type,//0是income，1是outcome
-      remark:this.data.remark,
-      index:this.data.index,
-      type:this.data.arrays[this.data.type][this.data.index]
+    var bills = wx.getStorageSync('bills') || [];
+    var bill = {
+      account: this.data.account,
+      amount: this.data.amount,
+      type: this.data.type,
+      detailType: this.data.selectIndex,
+      remark: this.data.remark,
+      date: this.data.date + " " + this.getCurrentTime(),
     };
-    this.setData({
-      id:parseInt(this.data.id)+1,
+    console.log(bill)
+    bills.push(bill);
+    wx.setStorageSync('bills', bills);
+    wx.switchTab({
+      url: '../logs/logs',
     })
-    var flag=true;
-    for(var i=0;bills[i]!=null;i++){
-       if(bills[i].date==bill.date){
-         bills[i].dailyb.push(bill);
-         if(bill.inORout==0){bills[i].dayIn=parseInt(bill.amount)+parseInt(bills[i].dayIn);}
-         else{bills[i].dayOut=parseInt(bill.amount)+parseInt(bills[i].dayOut);}
-         flag=false;
-       }
-    }
-    if(flag){
-      var dailybills={
-        date:this.data.date,
-        dayIn:0,
-        dayOut:0,
-        dailyb:[]
-      }
-      dailybills.dailyb.push(bill);
-      if(bill.inORout==0){dailybills.dayIn=bill.amount;}
-      else{dailybills.dayOut=bill.amount;}
-      bills.push(dailybills);
-    }
-    wx.setStorageSync('bills',bills);
   },
 
-  inputRemark: function(e) {
+  inputRemark: function (e) {
     this.setData({
       remark: e.detail.value
     });
@@ -120,6 +143,88 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
+    })
+  },
+  selectType: function (e) {
+    console.log(e)
+    if (this.data.type == 0)
+      var data = this.data.income
+    else if (this.data.type == 1)
+      var data = this.data.outcome
+    var index = e.currentTarget.dataset.index;
+    for (let i = 0; i < data.length; i++) {
+      if (index === data[i].id) {
+        var current = data[i].type;
+        var icon = data[i].icon[1];
+      }
+    }
+    this.setData({
+      selectIndex: index,
+      currentType: current,
+      currentIcon: icon,
+    })
+  },
+  clickBtn: function (event) {
+    var data = (this.data.amount)
+    console.log(event)
+    var id = event.target.id;
+    if (id == this.data.idb) {  //退格←
+      console.log("删除")
+      if (data == "0") {
+        return;
+      }
+      else {
+
+      }
+      var lastChar = data.charAt(data.length - 1);
+      console.log(lastChar)
+      if ((lastChar == '.')) {
+        console.log("点被删除")
+        this.setData({
+          numberOfDot: 0
+        })
+      }
+      data = data.substring(0, data.length - 1);
+      console.log(data)
+      if (data == "" || data == "－") {
+        data = 0;
+      }
+      this.setData({ amount: data });
+      return
+    } else if (id == this.data.idc) {  //清屏C
+      console.log("清除")
+      this.setData({
+        amount: "",
+        numberOfDot: 0
+      });
+      return
+    }
+    else if (id == this.data.idd) {
+      if (this.data.numberOfDot == 1) {
+        return
+      }
+      else {
+        if (data == "")
+          this.setData({
+            amount: "0.",
+            numberOfDot: 1
+          })
+        else {
+          this.setData({
+            amount: data + ".",
+            numberOfDot: 1
+          })
+        }
+        return
+      }
+    }
+    else if (id == this.data.ids) {
+      this.handleSubmit();
+    }
+    if (data == "NaN")
+      data = ""
+    this.setData({
+      amount: parseFloat(data + id).toString()
     })
   },
 })
