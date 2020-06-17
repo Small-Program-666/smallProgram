@@ -1,9 +1,11 @@
 //index.js
 //获取应用实例
+var util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
   data: {
+    id:0,
     amount: "",
     type: 0, //0为收入 1为支出
     incomeOrNot: 1,
@@ -32,6 +34,7 @@ Page({
     selectIndex: 0,//选择的id
     remark: '',
     date: '2020-05-28',
+    time:util.formatTime(new Date),
     currentType: '工资',//选择的Type
     currentIcon: '../../images/icon/工资.png',
     account: "支付宝",
@@ -50,7 +53,12 @@ Page({
     idd: ".",
     ids: "保存",
     numberOfDot: 0,
-    accounts: ["支付宝", "微信", "现金"]
+    accounts: ["支付宝", "微信", "现金"],
+    dayIn:0,
+    dayOut:0,
+    dailyb:[],
+    dailybnum:0,
+    totalbnum:0,
   },
   onLoad: function () {
     this.setData({
@@ -118,16 +126,72 @@ Page({
       return;
     }
     var bills = wx.getStorageSync('bills') || [];
-    var bill = {
-      account: this.data.account,
+
+    var dailybills={   //存放当日所有记录
+      date:this.data.date,
+      dayIn:this.data.dayIn,
+      dayOut:this.data.dayOut,
+      dailyb:this.data.dailyb,
+      dailybnum:this.data.dailybnum,
+    }
+
+    var bill = {   //单条记录
+      id:this.data.id,//+
       amount: this.data.amount,
-      type: this.data.type,
-      detailType: this.data.selectIndex,
+      date:this.data.date,//-
+      time:util.formatTime(new Date),//+
+      type:this.data.currentType,//+
+      icon:this.data.currentIcon,//+
+      account: this.data.account,
+      inORout: this.data.type,//0 in,1 out
       remark: this.data.remark,
-      date: this.data.date + " " + this.getCurrentTime(),
     };
-    console.log(bill)
-    bills.push(bill);
+
+    function compareDate(property){
+      return function(a,b){
+        var date1=a[property];
+        var date2=b[property];
+        return date2.localeCompare(date1); 
+      }
+    };
+    function countTotal(b){
+      var cnt=0;
+      for(var i=0;b[i]!=null;i++){
+        cnt+=b[i].dailybnum;
+      }
+      return cnt;
+    }
+
+    var flag=true;
+    for(var i=0;bills[i]!=null;i++){
+       if(bills[i].date==bill.date){
+         bills[i].dailybnum++;
+         var ttn=countTotal(bills);
+         bill.id=ttn;
+         bill.amount=parseFloat(bill.amount).toFixed(2);
+         bills[i].dailyb.unshift(bill);       
+         if(bill.inORout==0){bills[i].dayIn=(parseFloat(bill.amount)+parseFloat(bills[i].dayIn)).toFixed(2);}
+         else{bills[i].dayOut=(parseFloat(bill.amount)+parseFloat(bills[i].dayOut)).toFixed(2);}
+         flag=false;
+       }
+    }
+    if(flag){
+      var dailybills={
+        date:this.data.date,
+        dayIn:0,
+        dayOut:0,
+        dailyb:[],
+        dailybnum:1,
+      }
+      var ttn=countTotal(bills);
+      bill.id=ttn+1;
+      bill.amount=parseFloat(bill.amount).toFixed(2);
+      dailybills.dailyb.unshift(bill);
+      if(bill.inORout==0){dailybills.dayIn=parseFloat(bill.amount).toFixed(2);}
+      else{dailybills.dayOut=parseFloat(bill.amount).toFixed(2);}
+      bills.push(dailybills);
+      bills.sort(compareDate("date"));
+      }
     wx.setStorageSync('bills', bills);
     wx.switchTab({
       url: '../logs/logs',
