@@ -7,7 +7,7 @@ Page({
     jieyu:"0.00",
     sumin:"0.00",
     sumout:"0.00",
-    bugdet:"1500",
+    bugdet:1500,
     yearmonth: util.formatYearMonth(new Date),
     yearmonthstr: util.formatDate(new Date),
     flowable: "none",
@@ -36,7 +36,7 @@ Page({
    //   }
   //  }
     wx.navigateTo({
-      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark,
+      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark+'&account='+e.currentTarget.dataset.cell.account+'&icon='+e.currentTarget.dataset.cell.icon,
     })
   },
 
@@ -71,9 +71,9 @@ Page({
       so+=parseInt(bills[i].dayOut);
     }
     this.setData({
-      sumin:si,
-      sumout:so,
-      jieyu:1000+si-so,
+      sumin:si.toFixed(2),
+      sumout:so.toFixed(2),
+      jieyu:(1500+si-so).toFixed(2),
       list:wx.getStorageSync('bills')
     })
     obj.setData({
@@ -108,11 +108,6 @@ Page({
     var obj = this;
     obj.getPageRequset();
   },
-
-
-
-
-
 
   jumpToIndex: function(){
     wx.navigateTo({

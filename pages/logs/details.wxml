@@ -3,7 +3,7 @@
   <view class='head-left'>
     <view class='iconfont-box headimg'><!--获取detailtagbackground功能 style='background-color: {{detail.tagbg}}'-->
       <label class='icon'></label><!-- class='iconfont {{detail.tagimg}}'-->
-      <image src="/images/consumption.png"></image>
+      <image src="{{icon}}"></image>
     </view>
   </view>  
   <view class='head-right'>
@@ -40,7 +40,7 @@
       账户
     </view>
     <view class='detail-item-right'>
-      啥<!--{{detail.cardname}}-->
+     {{account}}
     </view>
   </view>
   <view class='detail-item'>
