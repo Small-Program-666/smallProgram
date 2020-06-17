@@ -1,40 +1,119 @@
 <!--index.wxml-->
 <!--基于xml的微信标记语言，定义页面结构-->
 <!---->
-<view class="container">
-  <image class="backg" src="../index/03.jpg"></image>
-  <view class="addOne">
-    <button wx:if="{{ incomeOrNot==0 }}" class="income" style="background-color:rgb(255,255,240)" bindtap="changeToIncome">收入</button>
-    <button wx:if="{{ incomeOrNot==1 }}" class="income" style="background-color:rgb(252, 218, 170)" bindtap="changeToIncome">收入</button>
-    <button wx:if="{{ outcomeOrNot==0 }}" class="outcome" style="background-color:rgb(255,255,240)" bindtap="changeToOutcome">支出</button>
-    <button wx:if="{{ outcomeOrNot==1 }}" class="outcome" style="background-color:rgb(252, 218, 170)" bindtap="changeToOutcome">支出</button>
-    <view class="total-view"></view>
-    <view class="amount-view"></view>
-    <view class="amount">金额：</view>
-    <view class="amount-input">
-      <input class="amount_input" type="digit" auto-focus placeholder="请输入数值" bindinput="inputAmount"></input>
+<view>
+    <image class="backg" src="../index/03.jpg"></image>
+    <button wx:if="{{ incomeOrNot==0 }}" class="income" style="background-color:rgb(255,255,240)"
+            bindtap="changeToIncome">
+        收入
+    </button>
+    <button wx:if="{{ incomeOrNot==1 }}" class="income" style="background-color:rgb(252, 218, 170)"
+            bindtap="changeToIncome">收入
+    </button>
+    <button wx:if="{{ outcomeOrNot==0 }}" class="outcome" style="background-color:rgb(255,255,240)"
+            bindtap="changeToOutcome">支出
+    </button>
+    <button wx:if="{{ outcomeOrNot==1 }}" class="outcome" style="background-color:rgb(252, 218, 170)"
+            bindtap="changeToOutcome">支出
+    </button>
+    <view class="tab-content {{type == 1 ? 'show' : 'hide'}}">
+        <view class="info-wrap">
+            <!-- 这里展示选中的分类 -->
+            <view class="info-wrap-left">
+                <image class="info-icon" mode='widtFix' src="{{currentIcon}} "></image>
+                <view class="info-category">
+                    {{currentType}}
+                </view>
+            </view>
+            <view class="info-money">{{amount==""?"0.00":amount}}</view>
+        </view>
+        <view class="outcomeList">
+            <view class="every" wx:for="{{outcome}}" wx:key="index">
+                <view class='imgWrapper' wx:for-index="{{index}}" bindtap="selectType" data-index="{{item.id}}"
+                      style='{{selectIndex == index ? "border:1px solid #02ad7b;":"border: none; "}}'>
+                    <image class="icon" src="{{selectIndex!=index?item.icon[0]:item.icon[1]}}" mode="aspectFit"
+                           bindtap="selectType">
+                    </image>
+                </view>
+                <view class="icon" wx:for-index="{{index}}" bindtap="selectType" data-index="{{item.id}}"
+                      style='{{selectIndex == index ? "color: #02ad7b;":"border: none; "}}'>
+                    {{item.type}}
+                </view>
+            </view>
+        </view>
     </view>
-    <view>
-      <view class="type-view"></view>
-      <text class="type">类型：</text>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view class="picker">{{ array[index] }}</view>
-      </picker>
+    <view class="tab-content {{type == 0 ? 'show' : 'hide'}}">
+        <view class="info-wrap">
+            <!-- 这里展示选中的分类 -->
+            <view class="info-wrap-left">
+                <image class="info-icon" mode='widtFix' src="{{currentIcon}}"></image>
+                <view class="info-category">
+                    {{currentType}}
+                </view>
+            </view>
+            <view class="info-money">{{amount==""?"0.00":amount}}</view>
+        </view>
+        <view class="incomeList">
+            <view class="every" wx:for="{{income}}" wx:key="index">
+                <view class="imgWrapper" wx:for-index="index" bindtap="selectType" data-index="{{item.id}}"
+                      style='{{selectIndex == index ? "border:1px solid #ea69a0;":"border: none; "}}'>
+                    <image class="icon" src="{{selectIndex!=index?item.icon[0]:item.icon[1]}}" mode="aspectFit">
+                    </image>
+                </view>
+                <view class="type" wx:for-index="{{index}}" bindtap="selectType" data-index="{{item.id}}"
+                      style='{{selectIndex== index ? "color: #ea69a0;":"border: none; "}}'>
+                    {{item.type}}
+                </view>
+            </view>
+        </view>
     </view>
-     <view class="date-view">
-      <text class="date">日期：</text>
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange">
-        <view class="date-picker">{{date}}</view>
-      </picker>
+    <view class="display-data">
+        <view class="display-type">
+            <view class="remark-input">
+             <view class="display2">备注:</view>
+                <input class="display1" type="text" placeholder="请输入备注" bindinput="inputRemark"></input>
+            </view>
+        </view>
+        <view class="display-account">
+            <picker bindchange="bindPickerChange" value="{{accoutIndex}}" range="{{accounts}}">
+                <image class="display-icon" src="../../images/icon/记账本.png" style="width: 40rpx; height: 40rpx"/>
+                <view class="display1">{{account}}</view>
+                <view class="display2">账户</view>
+            </picker>
+        </view>
+        <view class="display-date">
+            <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange">
+                <image class="display-icon" src="../../images/icon/日历.png" style="width: 40rpx; height: 40rpx"/>
+                <view class="display2">日期</view>
+                <view class="date-picker">{{date}}</view>
+            </picker>
+        </view>
     </view>
-    <view class="remark-view"></view>
-    <view class="remark">备注：</view>
-    <view class="remark-input">
-      <input class="remark_input" type="text" placeholder="请输入文本" bindinput="inputRemark"></input>
+    <view class="content">
+        <!-- 计算版面 -->
+        <view class="layout-bottom">
+            <view class="btnGroup">
+                <view class="item blue" bindtap="clickBtn" id="{{id7}}">7</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id8}}">8</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id9}}">9</view>
+                <view class="btnGroup2 orange" bindtap="clickBtn" id="{{idb}}">删除</view>
+            </view>
+            <view class="btnGroup">
+                <view class="item blue" bindtap="clickBtn" id="{{id4}}">4</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id5}}">5</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id6}}">6</view>
+            </view>
+            <view class="btnGroup">
+                <view class="item blue" bindtap="clickBtn" id="{{id1}}">1</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id2}}">2</view>
+                <view class="item blue" bindtap="clickBtn" id="{{id3}}">3</view>
+                <view class="btnGroup2 black" bindtap="clickBtn" id="{{ids}}">保存</view>
+            </view>
+            <view class="btnGroup">
+                <view class="item blue " bindtap="clickBtn" id="{{idc}}">C</view>
+                <view class="item blue " bindtap="clickBtn" id="{{id0}}">0</view>
+                <view class="item blue" bindtap="clickBtn" id="{{idd}}">.</view>
+            </view>
+        </view>
     </view>
-    <button class="handmit" bindtap="handleSubmit">提交</button>
-  </view>
-  <view>
-    <text class="encourage">此处放鼓励的话</text>
-  </view>
 </view>
