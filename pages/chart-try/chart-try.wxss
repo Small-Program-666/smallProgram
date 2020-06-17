@@ -1,0 +1,28 @@
+/**index.wxss**/
+.add{
+  width: 200rpx;
+  height: 120rpx;
+  position: fixed;
+  left: 280rpx;
+  bottom: 0rpx;
+  background-color: #F0FFF0;
+  border-top-left-radius: 200rpx;
+  border-top-right-radius: 200rpx;
+}
+.add::after{
+  border-top-left-radius: 100rpx;
+  border-top-right-radius: 100rpx;
+  border: none;
+}
+.add-pic{
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  left: 330rpx;
+  bottom: 0rpx;
+}
+
+.chart{
+  align-items: center;
+  justify-items: center;
+}

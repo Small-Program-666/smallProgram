@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<!--基于xml的微信标记语言，定义页面结构-->
+<!---->
+
+<view class="chart" style='width:100%;height:800rpx'>
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+</view>
+
+<view>"获取数据之类的啥都没写哈，数据现编的(张嘉玥)</view>
+
+<view>
+  <button class="add" bindtap="jumpToIndex">
+    <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
+  </button>
+</view>

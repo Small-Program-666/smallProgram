@@ -91,6 +91,7 @@
             </picker>
         </view>
     </view>
+        <!-- 计算版面 -->
         <view class="layout-bottom">
             <view class="btnGroup">
                 <view class="item blue" bindtap="clickBtn" id="{{id7}}">7</view>

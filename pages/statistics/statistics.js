@@ -1,6 +1,6 @@
 import * as echarts from '../../ec-canvas/echarts';
 
-let chart = null;
+// let chart = null;
 
 function initChart(canvas, width, height, dpr) {
   chart = echarts.init(canvas, null, {

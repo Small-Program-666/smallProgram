@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/chart-try/chart-try",
     "pages/logs/logs",
     "pages/index/index",
     "pages/statistics/statistics",
@@ -33,6 +34,10 @@
         "selectedIconPath": "images/bussiness-man.png",
         "pagePath": "pages/users/users",
         "text": "我的"
+      },
+      {
+        "pagePath":"pages/chart-try/chart-try",
+        "text":"试用表格"
       }
     ],
     "color": "#a9b7b7",
