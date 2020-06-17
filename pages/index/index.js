@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    NumVis: 0,//记得改回0
     amount: "",
     type: 0, //0为收入 1为支出
     incomeOrNot: 1,
@@ -163,6 +164,18 @@ Page({
       currentType: current,
       currentIcon: icon,
     })
+  },
+  changeNumToVis:function(e){
+    if(this.data.NumVis==0){
+      this.setData({
+        NumVis:1
+      })
+    }
+    else{
+      this.setData({
+        NumVis:0
+      })
+    }
   },
   clickBtn: function (event) {
     var data = (this.data.amount)
