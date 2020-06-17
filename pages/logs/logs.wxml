@@ -53,7 +53,7 @@
           <view class='dlitem-left'>
             <view class='iconfont-box dlitemimg'><!--获取celltagbackground功能 style='background-color: {{cell.tagbg}}'-->
               <label class='icon'></label><!-- class='iconfont {{cell.tagimg}}'-->
-              <image src="/images/consumption.png"></image>
+              <image src="{{cell.icon}}"></image>
             </view>
           </view>
           <view class='dlitem-right'>

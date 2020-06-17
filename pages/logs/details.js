@@ -9,8 +9,10 @@ Page({
     type:'',
     inORout:'支出',
     amount:0,
+    account:'',
     datetime:'',
-    remark:''
+    remark:'',
+    icon:''
   },
 
   /**
@@ -20,8 +22,10 @@ Page({
     this.setData({
       type:options.type,
       amount:options.amount,
+      account:options.account,
       datetime:options.date+' '+options.time,
       remark:options.remark,
+      icon:options.icon,
     })
     if(options.inORout==0){
       this.setData({inORout:'收入'})

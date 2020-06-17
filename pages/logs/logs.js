@@ -36,7 +36,7 @@ Page({
    //   }
   //  }
     wx.navigateTo({
-      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark,
+      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark+'&account='+e.currentTarget.dataset.cell.account+'&icon='+e.currentTarget.dataset.cell.icon,
     })
   },
 
@@ -108,11 +108,6 @@ Page({
     var obj = this;
     obj.getPageRequset();
   },
-
-
-
-
-
 
   jumpToIndex: function(){
     wx.navigateTo({
