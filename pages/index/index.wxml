@@ -78,13 +78,13 @@
         </view>
         <view class="display-account">
             <picker bindchange="bindPickerChange" value="{{accoutIndex}}" range="{{accounts}}">
-                <image class="display-icon" src="../../images/icon/记账本.png" style="width: 40rpx; height: 40rpx"/>
+                <image class="display-icon" src="/images/icon/book.png" style="width: 40rpx; height: 40rpx"/>
                 <view class="display1">{{account}}</view>
                 <view class="display2">账户：</view>
             </picker>
         </view>
         <view class="display-date">
-            <image class="display-icon" src="../../images/icon/日历.png" style="width: 40rpx; height: 40rpx"/>
+            <image class="display-icon" src="/images/icon/calenda.png" style="width: 40rpx; height: 40rpx"/>
             <view class="display2">日期：</view>
             <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange">
                 <text class="date-picker">{{date}}</text>

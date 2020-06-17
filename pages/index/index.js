@@ -12,12 +12,12 @@ Page({
     //icon中为选中前图标和选中后
     outcome: [
       {
-        icon: ['../../images/icon/餐饮.png', '../../images/icon/餐饮1.png'],
+        icon: ['/images/icon/eating.png', '/images/icon/eating1.png'],
         type: '餐饮',
         id: 0
       },
       {
-        icon: ['../../images/icon/交通.png', '../../images/icon/交通1.png'],
+        icon: ['/images/icon/goout.png', '/images/icon/goout1.png'],
         type: '出行',
         id: 1
       },
@@ -25,7 +25,7 @@ Page({
     accountIndex: 0,//选择的账本index
     income: [
       {
-        icon:['../../images/icon/工资.png','../../images/icon/工资.png'],
+        icon:['/images/icon/salary.png','/images/icon/salary.png'],
         type:'工资',
         id:0
       }
@@ -34,7 +34,7 @@ Page({
     remark: '',
     date: '2020-05-28',
     currentType: '工资',//选择的Type
-    currentIcon: '../../images/icon/工资.png',
+    currentIcon: '/images/icon/salary.png',
     account: "支付宝",
     idb: "back",
     idc: "clear",
