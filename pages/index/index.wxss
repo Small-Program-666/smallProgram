@@ -24,7 +24,7 @@ page{
   position: absolute;
 } */
 
-.income{
+.outcome{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   border-top-left-radius: 98rpx;
   border-bottom-left-radius:98rpx;
@@ -34,14 +34,14 @@ page{
   top: 50rpx;
 }
 
-.income::after{
+.outcome::after{
   border-top-left-radius: 98rpx;
   border-bottom-left-radius: 98rpx;
   border-width: 10rpx;
   border-color: rgb(252, 198, 150);
 }
 
-.outcome{
+.income{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   border-top-right-radius: 98rpx;
   border-bottom-right-radius:98rpx;
@@ -51,7 +51,7 @@ page{
   top: 50rpx;
 }
 
-.outcome::after{
+.income::after{
   border-top-right-radius: 98rpx;
   border-bottom-right-radius: 98rpx;
   border-width: 10rpx;

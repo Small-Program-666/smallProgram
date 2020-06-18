@@ -7,8 +7,8 @@ Page({
     NumVis: 0,//记得改回0
     amount: "",
     type: 0, //0为收入 1为支出
-    incomeOrNot: 1,
-    outcomeOrNot: 0,
+    incomeOrNot: 0,
+    outcomeOrNot: 1,
     //icon中为选中前图标和选中后
     outcome: [
       {
@@ -56,6 +56,11 @@ Page({
   onLoad: function () {
     this.setData({
       date: this.getCurrentDay(),
+      currentIcon:this.data.outcome[0].icon[1],
+      currentType:this.data.outcome[0].type,
+      type: 1,
+      outcomeOrNot: 1,
+      incomeOrNot: 0,
     })
   },
   bindPickerChange: function (e) {
