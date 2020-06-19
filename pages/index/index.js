@@ -61,6 +61,7 @@ Page({
     dailybnum:0,
     totalbnum:0,
     time:util.formatTime(new Date),
+    numberOfNumAfterDot:0,//控制小数点后最多2位数字
   },
   onLoad: function () {
     this.setData({
@@ -257,14 +258,18 @@ Page({
         return;
       }
       else {
-
+        if(this.data.numberOfDot==1)
+        this.setData({
+          numberOfNumAfterDot:this.data.numberOfNumAfterDot-1
+        })
       }
       var lastChar = data.charAt(data.length - 1);
       console.log(lastChar)
       if ((lastChar == '.')) {
         console.log("点被删除")
         this.setData({
-          numberOfDot: 0
+          numberOfDot: 0,
+          numberOfNumAfterDot:0
         })
       }
       data = data.substring(0, data.length - 1);
@@ -278,7 +283,8 @@ Page({
       console.log("清除")
       this.setData({
         amount: "",
-        numberOfDot: 0
+        numberOfDot: 0,
+        numberOfNumAfterDot:0
       });
       return
     }
@@ -306,6 +312,15 @@ Page({
     }
     if (data == "NaN")
       data = ""
+    if(this.data.numberOfDot==1)
+    if(this.data.numberOfNumAfterDot>=2){
+      return;
+    }
+    else{
+      this.setData({
+        numberOfNumAfterDot:this.data.numberOfNumAfterDot+1
+      })
+    }
     this.setData({
       amount: parseFloat(data + id).toString()
     })
