@@ -36,23 +36,23 @@
     </view>
   </view>
   <view class='showflow-empty'>
-    <view class='empty' style='display:{{flowable}}'>
+    <view class='empty' wx:if="{{flowable}}">
       <!--无记录时显示图片提示重新选择月份-->
       <!--image src='/pages/image/空白.jpg'></image-->
       <text>本月无记录，请重新选择月份~</text>
     </view>
   </view>
   <scroll-view scroll-y='true' class='showflow-main' style='height: {{scrollHeight}}px;' bindscrolltolower='searchScrollLower' bindscrolltoupper="bindscrolltoupper">
-    <view class='showflow-total-list' wx:for="{{list}}" wx:key="date" ><!--遍历list的功能wx:for="{{list}}" wx:key="date" wx:for-index="groupindex"-->
+    <view class='showflow-total-list' wx:for="{{list}}" wx:key="date" >
       <view class='dailytag'>
         <view class='dailytag-date'>{{item.date}}</view>
         <view class='dailytag-inout'>收入：{{item.dayIn}} 支出：{{item.dayOut}}</view>
       </view>
-      <view class='dailylist' wx:for="{{item.dailyb}}" wx:key="time" wx:for-item="cell"><!--遍历单日list功能  wx:for="{{item.mwters}}" wx:key="id" wx:for-item="cell" wx:for-index="cellindex"-->
+      <view class='dailylist' wx:for="{{item.dailyb}}" wx:key="time" wx:for-item="cell">
         <view bindtap='waterdetail' data-cell='{{cell}}'>
           <view class='dlitem-left'>
-            <view class='iconfont-box dlitemimg'><!--获取celltagbackground功能 style='background-color: {{cell.tagbg}}'-->
-              <label class='icon'></label><!-- class='iconfont {{cell.tagimg}}'-->
+            <view class='iconfont-box dlitemimg'>
+              <label class='icon'></label>
               <image src="{{cell.icon}}"></image>
             </view>
           </view>

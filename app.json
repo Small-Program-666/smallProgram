@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/chart-try/chart-try",
     "pages/logs/logs",
     "pages/index/index",
     "pages/statistics/statistics",
+    "pages/chart-try/chart-try",
     "pages/users/users",
     "pages/logs/details"
   ],

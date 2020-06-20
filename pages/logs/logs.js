@@ -9,21 +9,14 @@ Page({
     sumout:"0.00",
     bugdet:1500,
     yearmonth: util.formatYearMonth(new Date),
-    yearmonthstr: util.formatDate(new Date),
-    flowable: "none",
+    yearmonthstr: util.formatDate(new Date).substr(0,7),
+    flowable: false,
     homecolor: 'black',
     scrollHeight:"30",
     list:{},
   },
 
-  // 选择日期
-  sltyearmonth: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail);
-    this.setData({
-      yearmonth: util.formatYearMonth(new Date(e.detail.value))
-    });
-    //this.getPageRequset();
-  },
+  
   //跳转流水详情界面
   waterdetail: function(e){
     console.log(e);
@@ -43,7 +36,7 @@ Page({
   onLoad: function () {
     console.log("页面初始化");
     var obj = this;
-    if (app.globalData.openid != "") {
+    if (app.globalData.openid != "") {     
       obj.getPageRequset();
     } else {
       app.openidCallback = openid => {
@@ -56,25 +49,39 @@ Page({
     //  })
     //})
   },
-  
+ 
   getPageRequset: function(){
     var obj = this;
     // 显示顶部刷新图标  
     wx.showNavigationBarLoading();
     console.log("加载默认数据");
+    console.log(obj.data.yearmonthstr);
 
     var si=0;
     var so=0;
     var bills=wx.getStorageSync('bills')
+    var monthlyB=[];
     for(var i=0;bills[i]!=null;i++){
-      si+=parseInt(bills[i].dayIn);
-      so+=parseInt(bills[i].dayOut);
+      var ymstr=(bills[i].date).substr(0,7);
+      if(ymstr==this.data.yearmonthstr){
+        monthlyB.push(bills[i]);
+      }
+    }
+    if(monthlyB.length==0){
+      wx.showToast({
+        title: '本月没有记录哦~',
+        icon:'none'
+      })
+    }
+    for(var i=0;monthlyB[i]!=null;i++){
+      si+=parseInt(monthlyB[i].dayIn);
+      so+=parseInt(monthlyB[i].dayOut);
     }
     this.setData({
       sumin:si.toFixed(2),
       sumout:so.toFixed(2),
       jieyu:(1500+si-so).toFixed(2),
-      list:wx.getStorageSync('bills')
+      list:monthlyB,
     })
     obj.setData({
       list:this.data.list,
@@ -82,6 +89,16 @@ Page({
       sumin:this.data.sumin,
       sumout:this.data.sumout
     })
+  },
+
+   // 选择日期，刷新页面获取该月记录
+   sltyearmonth: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail);
+    this.setData({
+      yearmonth: util.formatYearMonth(new Date(e.detail.value)),
+      yearmonthstr: e.detail.value
+    });
+    this.getPageRequset();
   },
 
   //滚动到顶部/左边，会触发 scrolltoupper 事件
