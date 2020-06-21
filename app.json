@@ -8,7 +8,7 @@
     "pages/logs/details"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#F0FFF0",
+    "navigationBarBackgroundColor": "#EDEDF9",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "记账小管家",
     "backgroundColor": "#E6E6FA",
@@ -43,7 +43,7 @@
     "color": "#a9b7b7",
     "selectedColor": "#11cd6e",
     "borderStyle": "white",
-    "backgroundColor": "#F0FFF0"
+    "backgroundColor": "#ECF5F4"
   },
   "networkTimeout": {
     "request": 10000,

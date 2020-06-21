@@ -10,22 +10,28 @@ function initChart(canvas, width, height) {
   })
   canvas.setChart(chart);
   var option = {
+    title:[{
+      text:"收入统计",
+      left:'50%',
+      top:'20rpx',
+      textAlign:'center'
+    }],
     series: [
       {
-        name: '访问来源',
+        name: '收入',
         type: 'pie',
-        radius: ['60%', '70%'],
+        radius: ['50%', '70%'],
         animationType: 'scale',
         silent: true,
         labelLine: {
           normal: {
-            show: true
+            show: true,
           }
         },
         data: [
-          {value:10},
-          {value:3},
-          {value:15}
+          {name:'a',value:10},
+          {name:'b',value:3},
+          {name:'c',value:15}
         ],
         color: ["#666", "#179B16","#123"]
       }
