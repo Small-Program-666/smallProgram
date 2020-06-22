@@ -1,1 +1,15 @@
 /* pages/budget/budget.wxss */
+.backg{
+  opacity: 0.2;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+.managepage{
+  position: absolute;
+  top: 100rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 300rpx;
+  border: 1rpx solid black;
+}

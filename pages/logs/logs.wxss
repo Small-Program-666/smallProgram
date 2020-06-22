@@ -171,3 +171,42 @@
   width:70rpx;
   height: 60rpx
 }
+
+.tanchuang{
+  position: absolute;
+  top: 500rpx;
+  left: 50rpx;
+  right: 50rpx;
+  height: 300rpx;
+  background-color:#D5E0F6;
+  border-radius: 20rpx;
+}
+.display2{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 50rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  border-radius: 20rpx;
+}
+.display1{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size:30rpx;
+  position: absolute;
+  top: 100rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 50rpx;
+  border: 10rpx solid	#CFD3EC;
+  background-color: #ECEFF6;
+  border-radius: 20rpx;
+}
+.display3{
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  background-color: #ECEFF6;
+  border-radius: 20rpx;
+}

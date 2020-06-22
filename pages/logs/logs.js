@@ -8,13 +8,14 @@ Page({
     jieyu:"0.00",
     sumin:"0.00",
     sumout:"0.00",
-    budget:1500,
+    bugdet:1500,
     yearmonth: util.formatYearMonth(new Date),
     yearmonthstr: util.formatDate(new Date).substr(0,7),
     flowable: false,
     homecolor: 'black',
     scrollHeight:"30",
     list:{},
+    showOrNot:0,
     currentMoonSrc:'/images/happy.png',
     moonList:[
       '/images/sad.jpg',
@@ -157,9 +158,27 @@ Page({
     this.getPageRequset()
     this.changeMoon()
   },
-  setBudget: function () {
-    wx.navigateTo({
-      url: '../budget/budget',
+  changeShow: function () {
+    if(this.data.showOrNot==0){
+      this.setData({
+        showOrNot:1,
+      })
+    }
+    else{
+      this.setData({
+        showOrNot:0,
+      })
+    }
+  },
+  setBudget() {
+    wx.setStorageSync('budget', Number(this.data.budget)),
+    this.setData({
+      showOrNot:0,
     })
   },
+  inputBudget(e) {
+    this.setData({
+      budget: e.detail.value
+    })
+  }
 })
