@@ -34,9 +34,10 @@ Page({
       }
     ],
     selectIndex: 0,//选择的id
-    remark: '',
+    remark: '请输入备注',
     date: '2020-05-28',
     currentType: '工资',//选择的Type
+    currentTypeIndex:0,
     currentIcon: '/images/icon/salary.png',
     account: "支付宝",
     idb: "back",
@@ -62,16 +63,46 @@ Page({
     totalbnum:0,
     time:util.formatTime(new Date),
     numberOfNumAfterDot:0,//控制小数点后最多2位数字
+    defaultInfo:[]
   },
-  onLoad: function () {
-    this.setData({
+  onLoad: function (options) {
+    if(options.bdetail==undefined){
+      this.setData({
       date: this.getCurrentDay(),
       currentIcon:this.data.outcome[0].icon[1],
       currentType:this.data.outcome[0].type,
       type: 1,
       outcomeOrNot: 1,
       incomeOrNot: 0,
-    })
+      })
+      console.log("开始新的记账")
+    }else{
+      var defaultInfo=JSON.parse(options.bdetail)
+      var date=(defaultInfo.datetime).substr(0,10)
+      if(defaultInfo.inORout==0){this.changeToIncome()}
+      else{this.changeToOutcome()}
+      this.setData({
+         defaultInfo:defaultInfo,
+         date:date,
+         tyoe:defaultInfo.inORout,
+         account:defaultInfo.account,
+         amount:defaultInfo.amount,
+         remark:defaultInfo.remark,
+         incomeOrNot:defaultInfo.inORout==0?1:0,
+         outcomeOrNot:defaultInfo.inORout==1?1:0,
+         currentType:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].type:this.data.outcome[defaultInfo.selectIndex].type,
+         currentIcon:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].icon[1]:this.data.outcome[defaultInfo.selectIndex].icon[1]
+      })
+      this.changeNumToVis()
+      var dataset={index:defaultInfo.selectIndex}
+      var currentTarget={dataset:dataset}
+      var e={
+        currentTarget:currentTarget
+      }
+      this.selectType(e)
+      console.log("编辑已有账目")
+      console.log(defaultInfo)
+    }
   },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -152,7 +183,8 @@ Page({
       icon:this.data.currentIcon,//+
       account: this.data.account,
       inORout: this.data.type,//0 in,1 out
-      remark: this.data.remark,
+      remark: this.data.remark=='请输入备注'?'':this.data.remark,
+      selectIndex:this.data.selectIndex
     };
 
     function compareDate(property){

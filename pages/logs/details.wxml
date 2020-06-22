@@ -68,7 +68,7 @@
     </button>
   </view>
   <view class='btnitem2'>
-    <button bindtap="updatewater" class='btnsive' hover-class="btnsive-hover" data-detail='{{detail}}'>
+    <button bindtap="updatewater" class='btnsive' hover-class="btnsive-hover" data-bdetail='{{bdetail}}'>
       编辑<!--updatewater待实现-->
     </button>
   </view>

@@ -73,7 +73,7 @@
         <view class="display-type">
             <view class="remark-input">
              <view class="display2">备注：</view>
-                <input class="display1" type="text" placeholder="请输入备注" bindinput="inputRemark"></input>
+                <input class="display1" type="text" placeholder="{{remark}}" bindinput="inputRemark"></input>
             </view>
         </view>
         <view class="display-account">
