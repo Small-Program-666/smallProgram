@@ -175,6 +175,7 @@ Page({
     this.setData({
       showOrNot:0,
     })
+    this.onShow()
   },
   inputBudget(e) {
     this.setData({
