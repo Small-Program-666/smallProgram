@@ -58,7 +58,8 @@ Page({
     wx.navigateTo({
       url: '/pages/index/index?bdetail=' + JSON.stringify(e.target.dataset.bdetail)
     });
-    this.deletewater(e)//等delete完成
+    e.mut=true
+    this.deletewater(e)
   },
   deletewater:function(e){
     var bills = wx.getStorageSync('bills') || [];
@@ -89,7 +90,7 @@ Page({
       }
     }
     wx.setStorageSync('bills', bills)
-    wx.navigateBack({})
+    if(!e.mut){wx.navigateBack({})}
     var totalItem = wx.getStorageSync('totalItem')
     wx.setStorageSync('totalItem', totalItem - 1)
   },

@@ -84,8 +84,8 @@ Page({
       })
     }
     for(var i=0;monthlyB[i]!=null;i++){
-      si+=parseInt(monthlyB[i].dayIn);
-      so+=parseInt(monthlyB[i].dayOut);
+      si+=parseFloat(monthlyB[i].dayIn);
+      so+=parseFloat(monthlyB[i].dayOut);
     }
     this.setData({
       sumin:si.toFixed(2),

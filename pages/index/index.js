@@ -234,7 +234,8 @@ Page({
     totalbnum:0,
     time:util.formatTime(new Date),
     numberOfNumAfterDot:0,//控制小数点后最多2位数字
-    defaultInfo:[]
+    defaultInfo:[],
+    editing:false
   },
   onLoad: function (options) {
     if(options.bdetail==undefined){
@@ -255,27 +256,32 @@ Page({
       if(defaultInfo.inORout==0){this.changeToIncome()}
       else{this.changeToOutcome()}
       this.setData({
+        editing:true,
          defaultInfo:defaultInfo,
+         id:parseInt(defaultInfo.id),
          date:date,
          time:time,
-         tyoe:defaultInfo.inORout,
+         type:defaultInfo.inORout,
          account:defaultInfo.account,
          amount:defaultInfo.amount,
          remark:defaultInfo.remark,
          incomeOrNot:defaultInfo.inORout==0?1:0,
          outcomeOrNot:defaultInfo.inORout==1?1:0,
          currentType:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].type:this.data.outcome[defaultInfo.selectIndex].type,
-         currentIcon:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].icon[1]:this.data.outcome[defaultInfo.selectIndex].icon[1]
+         currentIcon:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].icon:this.data.outcome[defaultInfo.selectIndex].icon
       })
+      console.log("id:"+this.data.id)
       this.changeNumToVis()
       var dataset={index:defaultInfo.selectIndex}
       var currentTarget={dataset:dataset,mut:true}
       var e={
         currentTarget:currentTarget
       }
+      console.log(e)
       this.selectType(e)
       console.log("编辑已有账目")
       console.log(defaultInfo)
+      console.log("id:"+this.data.id)
     }
   },
   bindPickerChange: function (e) {
@@ -368,6 +374,14 @@ Page({
         return date2.localeCompare(date1); 
       }
     };
+    function compareId(property){
+      return function(a,b){
+        var va=parseInt(a[property]);
+        var vb=parseInt(b[property]);
+        if(va>=vb){return-1;}
+        else{return 1;}
+      }
+    }
     function countTotal(b){
       var cnt=0;
       for(var i=0;b[i]!=null;i++){
@@ -381,9 +395,10 @@ Page({
        if(bills[i].date==bill.date){
          bills[i].dailybnum++;
          var ttn=countTotal(bills);
-         bill.id=ttn;
+         if(!this.data.editing){bill.id=ttn;}
          bill.amount=parseFloat(bill.amount).toFixed(2);
-         bills[i].dailyb.unshift(bill);       
+         bills[i].dailyb.unshift(bill);  
+         (bills[i].dailyb).sort(compareId("id"));     
          if(bill.inORout==0){bills[i].dayIn=(parseFloat(bill.amount)+parseFloat(bills[i].dayIn)).toFixed(2);}
          else{bills[i].dayOut=(parseFloat(bill.amount)+parseFloat(bills[i].dayOut)).toFixed(2);}
          flag=false;
@@ -398,9 +413,10 @@ Page({
         dailybnum:1,
       }
       var ttn=countTotal(bills);
-      bill.id=ttn+1;
+      if(!this.data.editing){bill.id=ttn+1;}
       bill.amount=parseFloat(bill.amount).toFixed(2);
       dailybills.dailyb.unshift(bill);
+      (dailybills.dailyb).sort(compareId("id"));
       if(bill.inORout==0){dailybills.dayIn=parseFloat(bill.amount).toFixed(2);}
       else{dailybills.dayOut=parseFloat(bill.amount).toFixed(2);}
       bills.push(dailybills);
@@ -439,13 +455,14 @@ Page({
         break;
       }
     }
+    this.setData({selectIndex: index})
     if(!e.currentTarget.mut){
       this.setData({
       selectIndex: index,
       currentType: current,
       currentIcon: icon,
-    })
-    }
+   })
+   }
     
     console.log("test")
     console.log(this.data.currentType)
