@@ -189,11 +189,6 @@ Page({
         id: 5
       },
       {
-        icon: '/images/icon/salary.png',
-        type: '工资',
-        id: 6
-      },
-      {
         icon: '/images/icon/profit.png',
         type: '分红',
         id: 7

@@ -14,7 +14,7 @@
   width: 250rpx;
   position: absolute;
   left: 125rpx;
-  top: 100rpx;
+  top: 40rpx;
 }
 
 .outcome::after{
@@ -31,7 +31,7 @@
   width: 250rpx;
   position: absolute;
   left: 350rpx;
-  top: 100rpx;
+  top: 40rpx;
 }
 
 .income::after{
@@ -67,14 +67,14 @@
   align-items: center;
   justify-items: center;
   position: absolute;
-  top: 300rpx;
+  top: 200rpx;
 }
 
 .check{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background-color: aliceblue;
-  width: 50%;
+  width:50%;
   position: absolute;
-  bottom: 180rpx;
+  bottom: 150rpx;
   left: 25%;
 }
