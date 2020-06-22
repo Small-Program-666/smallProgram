@@ -11,6 +11,7 @@
     <view class='showbox-top'>
       <view class='st-money' bindtap="setBudget"><!--加一个点击设置预算功能-->
         <label class='st-money-box'>{{jieyu}}</label>   
+        <image src="{{currentMoonSrc}}" class='a'></image>
       </view>
       <view class='st-tag'>
         <picker class="rili-box" mode="date" fields="month" value='{{yearmonthstr}}' bindchange="sltyearmonth">

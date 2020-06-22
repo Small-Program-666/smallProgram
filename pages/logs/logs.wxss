@@ -166,3 +166,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.a{
+  width:70rpx;
+  height: 60rpx
+}

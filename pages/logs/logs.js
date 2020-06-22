@@ -8,13 +8,20 @@ Page({
     jieyu:"0.00",
     sumin:"0.00",
     sumout:"0.00",
-    bugdet:1500,
+    budget:1500,
     yearmonth: util.formatYearMonth(new Date),
     yearmonthstr: util.formatDate(new Date).substr(0,7),
     flowable: false,
     homecolor: 'black',
     scrollHeight:"30",
     list:{},
+    currentMoonSrc:'/images/happy.png',
+    moonList:[
+      '/images/sad.jpg',
+      '/images/0.jpg',
+      '/images/fine.jpg',
+      '/images/happy.png'
+    ]
   },
 
   
@@ -84,6 +91,7 @@ Page({
       sumout:so.toFixed(2),
       jieyu:(budget-so).toFixed(2),
       list:monthlyB,
+      budget:budget
     })
     obj.setData({
       list:this.data.list,
@@ -134,10 +142,20 @@ Page({
       url: '../index/index',
     })
   },
-
+  changeMoon:function(){
+    var index=0
+    console.log(this.data)
+    if(this.data.sumout<Number(this.data.budget))
+       index=Math.ceil((Number(this.data.jieyu)/(this.data.budget))*3)
+    console.log(index)
+    this.setData({
+      currentMoonSrc:this.data.moonList[index]
+    })
+  },
   onShow: function () {
     console.log('logs')
     this.getPageRequset()
+    this.changeMoon()
   },
   setBudget: function () {
     wx.navigateTo({
