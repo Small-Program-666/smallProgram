@@ -17,9 +17,9 @@ Page({
     showOrNot:0,
     currentMoonSrc:'/images/happy.png',
     moonList:[
-      '/images/sad.jpg',
-      '/images/0.jpg',
-      '/images/fine.jpg',
+      '/images/sad.png',
+      '/images/0.png',
+      '/images/fine.png',
       '/images/happy.png'
     ]
   },
