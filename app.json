@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/logs/logs",
-    "pages/index/index",
-    "pages/statistics/statistics",
     "pages/chart-try/chart-try",
+    "pages/index/index",
     "pages/users/users",
     "pages/logs/details"
   ],
@@ -26,7 +25,7 @@
       {
         "iconPath": "images/data1.png",
         "selectedIconPath": "images/data.png",
-        "pagePath": "pages/statistics/statistics",
+        "pagePath": "pages/chart-try/chart-try",
         "text": "统计"
       },
       {
@@ -34,10 +33,6 @@
         "selectedIconPath": "images/bussiness-man.png",
         "pagePath": "pages/users/users",
         "text": "我的"
-      },
-      {
-        "pagePath":"pages/chart-try/chart-try",
-        "text":"试用表格"
       }
     ],
     "color": "#a9b7b7",

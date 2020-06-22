@@ -1,4 +1,45 @@
 /**index.wxss**/
+
+.backg{
+  opacity: 0.2;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.outcome{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-top-left-radius: 98rpx;
+  border-bottom-left-radius:98rpx;
+  width: 250rpx;
+  position: absolute;
+  left: 125rpx;
+  top: 100rpx;
+}
+
+.outcome::after{
+  border-top-left-radius: 98rpx;
+  border-bottom-left-radius: 98rpx;
+  border-width: 10rpx;
+  border-color: rgb(252, 198, 150);
+}
+
+.income{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-top-right-radius: 98rpx;
+  border-bottom-right-radius:98rpx;
+  width: 250rpx;
+  position: absolute;
+  left: 350rpx;
+  top: 100rpx;
+}
+
+.income::after{
+  border-top-right-radius: 98rpx;
+  border-bottom-right-radius: 98rpx;
+  border-width: 10rpx;
+  border-color: rgb(252, 198, 150);
+}
 .add{
   width: 200rpx;
   height: 120rpx;
@@ -25,4 +66,15 @@
 .chart{
   align-items: center;
   justify-items: center;
+  position: absolute;
+  top: 300rpx;
+}
+
+.check{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: aliceblue;
+  width: 50%;
+  position: absolute;
+  bottom: 180rpx;
+  left: 25%;
 }
