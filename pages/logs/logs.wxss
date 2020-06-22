@@ -50,6 +50,7 @@
 
 .showbox-top {
   text-align: center;
+  margin-top: 20px;
 }
 
 .st-money {
@@ -79,7 +80,7 @@
 }
 
 .showbox-bottom {
-  margin-top: 35rpx;
+  margin-top: 20px;
 }
 
 .sd-item {
@@ -89,7 +90,7 @@
 }
 
 .showflow-main{
-  margin-top: 140px;
+  margin-top: 180px;
   min-height: 320px;
   clear: both;
 }

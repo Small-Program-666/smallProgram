@@ -13,7 +13,6 @@ Page({
     yearmonthstr: util.formatDate(new Date).substr(0,7),
     flowable: false,
     homecolor: 'black',
-    scrollHeight:"30",
     list:{},
     showOrNot:0,
     currentMoonSrc:'/images/happy.png',
