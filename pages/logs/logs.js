@@ -54,6 +54,7 @@ Page({
   getPageRequset: function(){
     var obj = this;
     // 显示顶部刷新图标  
+    var budget = wx.getStorageSync('budget')
     wx.showNavigationBarLoading();
     console.log("加载默认数据");
     console.log(obj.data.yearmonthstr);
@@ -81,7 +82,7 @@ Page({
     this.setData({
       sumin:si.toFixed(2),
       sumout:so.toFixed(2),
-      jieyu:(1500+si-so).toFixed(2),
+      jieyu:(budget-so).toFixed(2),
       list:monthlyB,
     })
     obj.setData({
@@ -90,6 +91,7 @@ Page({
       sumin:this.data.sumin,
       sumout:this.data.sumout
     })
+    wx.hideNavigationBarLoading()
   },
 
    // 选择日期，刷新页面获取该月记录
@@ -131,5 +133,15 @@ Page({
     wx.navigateTo({
       url: '../index/index',
     })
-  }
+  },
+
+  onShow: function () {
+    console.log('logs')
+    this.getPageRequset()
+  },
+  setBudget: function () {
+    wx.navigateTo({
+      url: '../budget/budget',
+    })
+  },
 })

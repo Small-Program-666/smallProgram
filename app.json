@@ -4,7 +4,8 @@
     "pages/chart-try/chart-try",
     "pages/index/index",
     "pages/users/users",
-    "pages/logs/details"
+    "pages/logs/details",
+    "pages/budget/budget"
   ],
   "window": {
     "navigationBarBackgroundColor": "#EDEDF9",

@@ -13,25 +13,196 @@ Page({
     incomeOrNot: 0,
     outcomeOrNot: 1,
     //icon中为选中前图标和选中后
+    
+    accountIndex: 0,//选择的账本index
     outcome: [
       {
-        icon: ['/images/icon/eating.png', '/images/icon/eating1.png'],
+        icon: '/images/icon/eating1.png',
         type: '餐饮',
         id: 0
       },
       {
-        icon: ['/images/icon/goout.png', '/images/icon/goout1.png'],
-        type: '出行',
+        icon: '/images/icon/shopping.png',
+        type: '购物',
         id: 1
       },
+      {
+        icon: '/images/icon/goout.png',
+        type: '交通',
+        id: 2
+      },
+      {
+        icon: '/images/icon/daily.png',
+        type: '日用',
+        id: 3
+      },
+      {
+        icon: '/images/icon/fruit.png',
+        type: '水果',
+        id: 4
+      },
+      {
+        icon: '/images/icon/eating.png',
+        type: '零食',
+        id: 5
+      },
+      {
+        icon: '/images/icon/sports.png',
+        type: '运动',
+        id: 6
+      },
+      {
+        icon: '/images/icon/fun.png',
+        type: '娱乐',
+        id: 7
+      },
+      {
+        icon: '/images/icon/communication.png',
+        type: '通讯',
+        id: 8
+      },
+      {
+        icon: '/images/icon/clothes.png',
+        type: '服饰',
+        id: 9
+      },
+      {
+        icon: '/images/icon/beauty.png',
+        type: '美容',
+        id: 10
+      },
+      {
+        icon: '/images/icon/house.png',
+        type: '住房',
+        id: 11
+      },
+      {
+        icon: '/images/icon/children.png',
+        type: '孩子',
+        id: 12
+      },
+      {
+        icon: '/images/icon/elder.png',
+        type: '长辈',
+        id: 13
+      },
+      {
+        icon: '/images/icon/social.png',
+        type: '社交',
+        id: 14
+      },
+      {
+        icon: '/images/icon/travel.png',
+        type: '旅行',
+        id: 15
+      },
+      {
+        icon: '/images/icon/wine.png',
+        type: '烟酒',
+        id: 16
+      },
+      {
+        icon: '/images/icon/digitalDevice.png',
+        type: '数码',
+        id: 17
+      },
+      {
+        icon: '/images/icon/medicalCare.png',
+        type: '医疗',
+        id: 18
+      },
+      {
+        icon: '/images/icon/book1.png',
+        type: '书籍',
+        id: 19
+      },
+      {
+        icon: '/images/icon/study.png',
+        type: '学习',
+        id: 20
+      },
+      {
+        icon: '/images/icon/pet.png',
+        type: '宠物',
+        id: 21
+      },
+      {
+        icon: '/images/icon/cashGift.png',
+        type: '礼金',
+        id: 22
+      },
+      {
+        icon: '/images/icon/gift.png',
+        type: '礼物',
+        id: 23
+      },
+      {
+        icon: '/images/icon/work.png',
+        type: '办公',
+        id: 24
+      },
+      {
+        icon: '/images/icon/fix.png',
+        type: '维修',
+        id: 25
+      },
+      {
+        icon: '/images/icon/heart.png',
+        type: '捐赠',
+        id: 26
+      },
+      {
+        icon: '/images/icon/goodLuck.png',
+        type: '彩票',
+        id: 27
+      },
     ],
-    accountIndex: 0,//选择的账本index
     income: [
       {
-        icon:['/images/icon/salary.png','/images/icon/salary.png'],
-        type:'工资',
-        id:0
-      }
+        icon: '/images/icon/salary.png',
+        type: '工资',
+        id: 0
+      },
+      {
+        icon: '/images/icon/parttimeJob.png',
+        type: '兼职',
+        id: 1
+      },
+      {
+        icon: '/images/icon/financial.png',
+        type: '理财',
+        id: 2
+      },
+      {
+        icon: '/images/icon/cashGift.png',
+        type: '礼金',
+        id: 3
+      },
+      {
+        icon: '/images/icon/reward.png',
+        type: '奖金',
+        id: 4
+      },
+      {
+        icon: '/images/icon/help.png',
+        type: '补助',
+        id: 5
+      },
+      {
+        icon: '/images/icon/salary.png',
+        type: '工资',
+        id: 6
+      },
+      {
+        icon: '/images/icon/profit.png',
+        type: '分红',
+        id: 7
+      },
+      {
+        icon: '/images/icon/other.png',
+        type: '其它',
+        id: 8
+      },
     ],
     selectIndex: 0,//选择的id
     remark: '请输入备注',
@@ -70,7 +241,7 @@ Page({
       this.setData({
       date: this.getCurrentDay(),
       time: util.formatTime(new Date),
-      currentIcon:this.data.outcome[0].icon[1],
+      currentIcon:this.data.outcome[0].icon,
       currentType:this.data.outcome[0].type,
       type: 1,
       outcomeOrNot: 1,
@@ -135,7 +306,7 @@ Page({
   },
   changeToIncome: function () {
     this.setData({
-      currentIcon: this.data.income[0].icon[1],
+      currentIcon: this.data.income[0].icon,
       currentType: this.data.income[0].type,
       type: 0,
       incomeOrNot: 1,
@@ -144,7 +315,7 @@ Page({
   },
   changeToOutcome: function () {
     this.setData({
-      currentIcon:this.data.outcome[0].icon[1],
+      currentIcon:this.data.outcome[0].icon,
       currentType:this.data.outcome[0].type,
       type: 1,
       outcomeOrNot: 1,
@@ -235,6 +406,8 @@ Page({
       bills.push(dailybills);
       bills.sort(compareDate("date"));
       }
+    var totalItem = wx.getStorageSync('totalItem')
+    wx.setStorageSync('totalItem', totalItem + 1)
     wx.setStorageSync('bills', bills);
     wx.switchTab({
       url: '../logs/logs',
@@ -262,7 +435,7 @@ Page({
     for (let i = 0; i < data.length; i++) {
       if (index === data[i].id) {
         var current = data[i].type;
-        var icon = data[i].icon[1];
+        var icon = data[i].icon;
         break;
       }
     }

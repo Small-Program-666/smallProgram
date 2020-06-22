@@ -13,7 +13,9 @@ Page({
     datetime:'',
     remark:'',
     icon:'',
-    id:0
+    id:0,
+    date: '',
+    time: ''
   },
 
   /**
@@ -39,7 +41,9 @@ Page({
       datetime:options.date+' '+options.time,
       remark:options.remark,
       icon:options.icon,
-      bdetail:bdetail
+      bdetail:bdetail,
+      date: options.date,
+      time: options.time
     })
     
     if(options.inORout==0){
@@ -55,13 +59,39 @@ Page({
       url: '/pages/index/index?bdetail=' + JSON.stringify(e.target.dataset.bdetail)
     });
     this.deletewater(e)//等delete完成
-    
-
   },
   deletewater:function(e){
-    console.log("delete~")
-    var id=e.target.dataset.bdetail.id//删除id为此id的记录
-    
+    var bills = wx.getStorageSync('bills') || [];
+    for (var i = 0; i < bills.length; i++) {
+      if (bills[i].date == this.data.date) {
+        var bill = bills[i]
+        var dailyb = bill.dailyb
+        if (bill.dailybnum == 1) {
+          bills.splice(i, 1)
+          break
+        } else {
+          for (var j = 0; j < bill.dailybnum; ++j) {
+            console.log(dailyb[j])
+            if (dailyb[j].time == this.data.time) {
+              console.log(j)
+              if (dailyb[j].inORout == 0) { //收入
+                bills[i].dayIn -= dailyb[j].amount
+              } else {
+                bills[i].dayOut -= dailyb[j].amount
+              }
+              bills[i].dailyb.splice(j, 1)
+              break;
+            }
+          }
+          bills[i].dailybnum -= 1
+        }
+        break
+      }
+    }
+    wx.setStorageSync('bills', bills)
+    wx.navigateBack({})
+    var totalItem = wx.getStorageSync('totalItem')
+    wx.setStorageSync('totalItem', totalItem - 1)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

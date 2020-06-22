@@ -58,8 +58,7 @@
           </view>
           <view class='dlitem-right'>
             <view class='dlitem-tagname'>
-              {{cell.type}}
-              <label class='dlitem-tagremark'>{{cell.remark}}</label>
+              <label class='dlitem-tagremark'>{{cell.remark==""?cell.type:cell.remark}}</label>
             </view>
             <view class='dlitem-money'>
               {{cell.amount}}

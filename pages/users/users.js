@@ -222,6 +222,14 @@ Page({
         })
       },
     })
+    var totalBills = wx.getStorage({
+      key: 'totalItem',
+      success: function (res) {
+        that.setData({
+          totalItem: res.data
+        })
+      },
+    })
     var D = (new Date()).getDate().toString();
     if (D != wx.getStorageSync('D')){
       this.setData({
