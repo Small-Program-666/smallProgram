@@ -15,6 +15,7 @@ Page({
     homecolor: 'black',
     scrollHeight:"30",
     list:{},
+    showOrNot:0,
   },
 
   
@@ -139,9 +140,27 @@ Page({
     console.log('logs')
     this.getPageRequset()
   },
-  setBudget: function () {
-    wx.navigateTo({
-      url: '../budget/budget',
+  changeShow: function () {
+    if(this.data.showOrNot==0){
+      this.setData({
+        showOrNot:1,
+      })
+    }
+    else{
+      this.setData({
+        showOrNot:0,
+      })
+    }
+  },
+  setBudget() {
+    wx.setStorageSync('budget', Number(this.data.budget)),
+    this.setData({
+      showOrNot:0,
     })
   },
+  inputBudget(e) {
+    this.setData({
+      budget: e.detail.value
+    })
+  }
 })

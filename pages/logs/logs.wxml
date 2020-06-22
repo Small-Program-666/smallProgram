@@ -9,7 +9,7 @@
 <view class='showflow'>
   <view class='showbox' style='height: 140px;color:black;'>
     <view class='showbox-top'>
-      <view class='st-money' bindtap="setBudget"><!--加一个点击设置预算功能-->
+      <view class='st-money' bindtap="changeShow"><!--加一个点击设置预算功能-->
         <label class='st-money-box'>{{jieyu}}</label>   
       </view>
       <view class='st-tag'>
@@ -70,6 +70,12 @@
   </scroll-view>
 
 
+</view>
+
+<view class="tanchuang" wx:if="{{ showOrNot==1 }}">
+  <text class="display2">预算：</text>
+  <input class="display1" type="text" placeholder="请输入预算" bindinput="inputBudget"></input>
+  <button class="display3" bindtap="setBudget">保存</button>
 </view>
 
 <view class='add'>

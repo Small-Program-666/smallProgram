@@ -1,4 +1,7 @@
 <!--pages/budget/budget.wxml-->
-<view class="display2">预算：</view>
-<input class="display1" type="text" placeholder="请输入预算" bindinput="inputBudget"></input>
-<button bindtap="setBudget">保存</button>
+<image style="width:100%;height:100%;" class="backg" src="/bg/8.jpeg"></image>
+<view class="managepage">
+  <text class="display2">预算：</text>
+  <input class="display1" type="text" placeholder="请输入预算" bindinput="inputBudget"></input>
+  <button bindtap="setBudget">保存</button>
+</view>

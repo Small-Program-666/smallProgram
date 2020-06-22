@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/logs/logs",
+    "pages/budget/budget",
     "pages/chart-try/chart-try",
     "pages/index/index",
     "pages/users/users",
-    "pages/logs/details",
-    "pages/budget/budget"
+    "pages/logs/details"
   ],
   "window": {
     "navigationBarBackgroundColor": "#EDEDF9",
