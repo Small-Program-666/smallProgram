@@ -12,7 +12,8 @@ Page({
     account:'',
     datetime:'',
     remark:'',
-    icon:''
+    icon:'',
+    id:0
   },
 
   /**
@@ -20,6 +21,7 @@ Page({
    */
   onLoad: function (options) {
     var bdetail={
+      id:options.id,
       type:options.type,
       amount:options.amount,
       account:options.account,
@@ -30,6 +32,7 @@ Page({
       selectIndex:options.selectIndex
     }
     this.setData({
+      id:options.id,
       type:options.type,
       amount:options.amount,
       account:options.account,
@@ -51,7 +54,14 @@ Page({
     wx.navigateTo({
       url: '/pages/index/index?bdetail=' + JSON.stringify(e.target.dataset.bdetail)
     });
+    this.deletewater(e)
+    console.log("upid"+e.target.dataset.bdetail.id)
 
+  },
+  deletewater:function(e){
+    
+    var id=e.target.dataset.bdetail.id
+    console.log("delete~"+id)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

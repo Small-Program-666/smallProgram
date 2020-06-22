@@ -3,6 +3,7 @@ const util = require('../../utils/util.js')
 const app = getApp();
 Page({
   data: {
+    id:0,
     logs: [],
     jieyu:"0.00",
     sumin:"0.00",
@@ -29,7 +30,7 @@ Page({
    //   }
   //  }
     wx.navigateTo({
-      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark+'&account='+e.currentTarget.dataset.cell.account+'&icon='+e.currentTarget.dataset.cell.icon+'&selectIndex='+e.currentTarget.dataset.cell.selectIndex,
+      url: '/pages/logs/details?type=' +e.currentTarget.dataset.cell.type+'&amount='+e.currentTarget.dataset.cell.amount+'&inORout='+e.currentTarget.dataset.cell.inORout+'&date='+e.currentTarget.dataset.cell.date+'&time='+e.currentTarget.dataset.cell.time+'&remark='+e.currentTarget.dataset.cell.remark+'&account='+e.currentTarget.dataset.cell.account+'&icon='+e.currentTarget.dataset.cell.icon+'&selectIndex='+e.currentTarget.dataset.cell.selectIndex+'&id='+e.currentTarget.dataset.cell.id,
     })
   },
 

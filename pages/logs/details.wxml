@@ -63,7 +63,7 @@
 
 <view class='content btnbox'>
   <view class='btnitem1'>
-    <button bindtap="delwater" class='btnsive' hover-class="btnsive-hover" data-id='{{detail.id}}'>
+    <button bindtap="deletewater" class='btnsive' hover-class="btnsive-hover" data-bdetail='{{bdetail}}'>
       删除
     </button>
   </view>

@@ -69,6 +69,7 @@ Page({
     if(options.bdetail==undefined){
       this.setData({
       date: this.getCurrentDay(),
+      time: util.formatTime(new Date),
       currentIcon:this.data.outcome[0].icon[1],
       currentType:this.data.outcome[0].type,
       type: 1,
@@ -79,6 +80,7 @@ Page({
     }else{
       var defaultInfo=JSON.parse(options.bdetail)
       var date=(defaultInfo.datetime).substr(0,10)
+      var time=(defaultInfo.datetime).substr(11,8)
       if(defaultInfo.inORout==0){this.changeToIncome()}
       else{this.changeToOutcome()}
       this.setData({
@@ -95,7 +97,7 @@ Page({
       })
       this.changeNumToVis()
       var dataset={index:defaultInfo.selectIndex}
-      var currentTarget={dataset:dataset}
+      var currentTarget={dataset:dataset,mut:true}
       var e={
         currentTarget:currentTarget
       }
@@ -178,7 +180,7 @@ Page({
       id:this.data.id,//+
       amount: this.data.amount,
       date:this.data.date,//-
-      time:util.formatTime(new Date),//+
+      time:this.data.time,//+
       type:this.data.currentType,//+
       icon:this.data.currentIcon,//+
       account: this.data.account,
@@ -260,13 +262,19 @@ Page({
       if (index === data[i].id) {
         var current = data[i].type;
         var icon = data[i].icon[1];
+        break;
       }
     }
-    this.setData({
+    if(!e.currentTarget.mut){
+      this.setData({
       selectIndex: index,
       currentType: current,
       currentIcon: icon,
     })
+    }
+    
+    console.log("test")
+    console.log(this.data.currentType)
   },
   changeNumToVis:function(e){
     if(this.data.NumVis==0){
