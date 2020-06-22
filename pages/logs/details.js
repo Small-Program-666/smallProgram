@@ -59,7 +59,7 @@ Page({
       url: '/pages/index/index?bdetail=' + JSON.stringify(e.target.dataset.bdetail)
     });
     e.mut=true
-    this.deletewater(e)
+    
   },
   deletewater:function(e){
     var bills = wx.getStorageSync('bills') || [];
@@ -73,12 +73,14 @@ Page({
         } else {
           for (var j = 0; j < bill.dailybnum; ++j) {
             console.log(dailyb[j])
-            if (dailyb[j].time == this.data.time) {
+            if (dailyb[j].id == this.data.id) {
               console.log(j)
               if (dailyb[j].inORout == 0) { //收入
                 bills[i].dayIn -= dailyb[j].amount
+                bills[i].dayIn=parseFloat(bills[i].dayIn).toFixed(2)
               } else {
                 bills[i].dayOut -= dailyb[j].amount
+                bills[i].dayOut=parseFloat(bills[i].dayOut).toFixed(2)
               }
               bills[i].dailyb.splice(j, 1)
               break;

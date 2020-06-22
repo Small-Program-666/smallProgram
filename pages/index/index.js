@@ -336,6 +336,10 @@ Page({
   },
 
   handleSubmit: function (e) {
+    if(this.data.editing){
+      console.log("*******")
+      this.deleteprev()
+    }
     console.log(e)
     if (!this.data.amount) {
       wx.showToast({
@@ -429,7 +433,41 @@ Page({
       url: '../logs/logs',
     })
   },
-
+  deleteprev:function(){
+    var bills = wx.getStorageSync('bills') || [];
+    var date=(this.data.defaultInfo.datetime).substr(0,10)
+    for (var i = 0; i < bills.length; i++) {
+      if (bills[i].date == date) {
+        var bill = bills[i]
+        var dailyb = bill.dailyb
+        if (bill.dailybnum == 1) {
+          bills.splice(i, 1)
+          break
+        } else {
+          for (var j = 0; j < bill.dailybnum; ++j) {
+            console.log(dailyb[j])
+            if (dailyb[j].id == this.data.defaultInfo.id) {
+              console.log(j)
+              if (dailyb[j].inORout == 0) { //收入
+                bills[i].dayIn -= dailyb[j].amount
+                bills[i].dayIn=parseFloat(bills[i].dayIn).toFixed(2)
+              } else {
+                bills[i].dayOut -= dailyb[j].amount
+                bills[i].dayOut=parseFloat(bills[i].dayOut).toFixed(2)
+              }
+              bills[i].dailyb.splice(j, 1)
+              break;
+            }
+          }
+          bills[i].dailybnum -= 1
+        }
+        break
+      }
+    }
+    wx.setStorageSync('bills', bills)
+    var totalItem = wx.getStorageSync('totalItem')
+    wx.setStorageSync('totalItem', totalItem - 1)
+  },
   inputRemark: function (e) {
     this.setData({
       remark: e.detail.value
