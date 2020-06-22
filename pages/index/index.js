@@ -86,6 +86,7 @@ Page({
       this.setData({
          defaultInfo:defaultInfo,
          date:date,
+         time:time,
          tyoe:defaultInfo.inORout,
          account:defaultInfo.account,
          amount:defaultInfo.amount,

@@ -54,14 +54,14 @@ Page({
     wx.navigateTo({
       url: '/pages/index/index?bdetail=' + JSON.stringify(e.target.dataset.bdetail)
     });
-    this.deletewater(e)
-    console.log("upid"+e.target.dataset.bdetail.id)
+    this.deletewater(e)//等delete完成
+    
 
   },
   deletewater:function(e){
+    console.log("delete~")
+    var id=e.target.dataset.bdetail.id//删除id为此id的记录
     
-    var id=e.target.dataset.bdetail.id
-    console.log("delete~"+id)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
