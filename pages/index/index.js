@@ -230,7 +230,9 @@ Page({
     time:util.formatTime(new Date),
     numberOfNumAfterDot:0,//控制小数点后最多2位数字
     defaultInfo:[],
-    editing:false
+    editing:false,
+
+    showOrNot:0, //控制记账成功后的弹窗
   },
   onLoad: function (options) {
     if(options.bdetail==undefined){
@@ -316,6 +318,7 @@ Page({
       outcomeOrNot: 0,
     })
   },
+
   changeToOutcome: function () {
     this.setData({
       currentIcon:this.data.outcome[0].icon,
@@ -330,7 +333,7 @@ Page({
     this.setData({
       amount: e.detail.value
     });
-  },
+  },  
 
   handleSubmit: function (e) {
     if(this.data.editing){
@@ -345,6 +348,7 @@ Page({
       });
       return;
     }
+
     var bills = wx.getStorageSync('bills') || [];
 
     var dailybills={   //存放当日所有记录
@@ -391,6 +395,56 @@ Page({
       return cnt;
     }
 
+    //延时控件
+    function sleep(numberMillis) {
+      var now = new Date();
+      var exitTime = now.getTime() + numberMillis;
+      while (true) {
+        now = new Date();
+        if (now.getTime() > exitTime)
+          return;
+      }
+    }
+
+    function encourage(x){
+      if( (x%5) == 0){
+        wx.showToast({
+          title: '严格律己，小记一笔~',
+          icon:'none',
+          duration:2000,
+          mask:true
+        })
+      }else if ( (x%5) == 1){
+        wx.showToast({
+          title: '真棒，下次也要及时记账哦~',
+          icon:'none',
+          duration:2000,
+          mask:true
+        })
+      }else if ( (x%5) == 2){
+        wx.showToast({
+          title: '不积小流，无以成江海~',
+          icon:'none',
+          duration:2000,
+          mask:true
+        })
+      }else if( (x%5) == 3){
+        wx.showToast({
+          title: '一步步，养成记账的好习惯~',
+          icon:'none',
+          duration:2000,
+          mask:true
+        })
+      }else if ( (x%5) == 4){
+        wx.showToast({
+          title: '布谷布谷，记账可不能咕咕咕哦~',
+          icon:'none',
+          duration:2000,
+          mask:true
+        })
+      }
+    }
+
     var flag=true;
     for(var i=0;bills[i]!=null;i++){
        if(bills[i].date==bill.date){
@@ -426,6 +480,11 @@ Page({
     var totalItem = wx.getStorageSync('totalItem')
     wx.setStorageSync('totalItem', Number(totalItem) + 1)
     wx.setStorageSync('bills', bills);
+    //鼓励的话
+    var x = parseInt(Math.random() * 10,10);
+    encourage(x);
+    
+    sleep(1200);
     wx.switchTab({
       url: '../logs/logs',
     })

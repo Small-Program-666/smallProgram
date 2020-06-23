@@ -41,42 +41,46 @@
 <view wx:else>
   <view class="userinfo">
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <image class="backg" src="../users/05.png"></image>
+      <image class="backg" src="../users/8.jpeg"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
 
   
 
   <view class="hr"></view>
+
   <view class='item'>
     <view class="title">打卡天数</view>
     <view class="detail2">
       <text>>{{firstTime}}天</text>
     </view>
   </view>
+
   <view class="line"></view>
 
-  <view class='item'>
+  <!-- <view class='item'>
     <view class="title">记账总天数</view>
     <view class="detail2">
       <text>>{{totalDay}}天</text>
     </view>
-  </view>
+  </view> -->
   
   <view class="line"></view>
+  
   <view class='item'>
     <view class="title">记账总笔数</view>
     <view class="detail2">
       <text>>{{totalItem}}笔</text>
     </view>
   </view>
+
+  <view class="hr"></view>
   <view class="hr"></view>
   
-  <button bindtap="switch"> 打卡 </button>
+  <view>
+    <button class="date" hover-class = "hover" bindtap="switch"> 打卡 </button>
+  </view>
   
-  <!-- <view wx:for="{{dateArray}}">
-    {{index}}: {{item.month}}
-  </view> -->
 </view>
 
 <view class='add'>

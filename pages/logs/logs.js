@@ -143,6 +143,7 @@ Page({
       url: '../index/index',
     })
   },
+
   changeMoon:function(){
     var index=0
     console.log(this.data)
@@ -153,11 +154,13 @@ Page({
       currentMoonSrc:this.data.moonList[index]
     })
   },
+
   onShow: function () {
     console.log('logs')
     this.getPageRequset()
     this.changeMoon()
   },
+
   changeShow: function () {
     if(this.data.showOrNot==0){
       this.setData({
@@ -170,6 +173,7 @@ Page({
       })
     }
   },
+  
   setBudget() {
     wx.setStorageSync('budget', Number(this.data.budget)),
     this.setData({

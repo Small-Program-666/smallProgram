@@ -5,6 +5,14 @@
   clear: both;
   vertical-align: middle;  
 }
+
+.backg{
+  opacity: 0.2;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+
 .head-left{
   float: left;
   width: 17%;

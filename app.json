@@ -10,7 +10,7 @@
   "window": {
     "navigationBarBackgroundColor": "#EDEDF9",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "记账小管家",
+    "navigationBarTitleText": "布谷记账",
     "backgroundColor": "#E6E6FA",
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true

@@ -67,6 +67,7 @@
             </view>
         </view>
     </view>
+
     <view class="content" wx:if="{{ NumVis==1 }}">
         <!-- 计算版面 -->
     <view class="display-data">
