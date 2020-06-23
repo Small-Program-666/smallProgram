@@ -52,7 +52,7 @@
   <view class='item'>
     <view class="title">打卡天数</view>
     <view class="detail2">
-      <text>>{{firstTime}}天</text>
+      <text>{{firstTime}}天</text>
     </view>
   </view>
 
@@ -70,7 +70,7 @@
   <view class='item'>
     <view class="title">记账总笔数</view>
     <view class="detail2">
-      <text>>{{totalItem}}笔</text>
+      <text>{{totalItem}}笔</text>
     </view>
   </view>
 
@@ -83,6 +83,8 @@
   
 </view>
 
-<view class='add'>
-    <image class='add-pic' bindtap="jumpToIndex" src='/images/add2.png'></image>
+<view>
+  <button class="add" bindtap="jumpToIndex">
+    <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
+  </button>
 </view>

@@ -227,7 +227,7 @@ Page({
       key: 'totalItem',
       success: function (res) {
         that.setData({
-          totalItem: res.data + 1
+          totalItem: res.data
         })
       },
     })
