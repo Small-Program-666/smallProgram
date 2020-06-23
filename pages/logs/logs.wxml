@@ -61,7 +61,10 @@
             <view class='dlitem-tagname'>
               <label class='dlitem-tagremark'>{{cell.remark==""?cell.type:cell.remark}}</label>
             </view>
-            <view class='dlitem-money'>
+            <view class='dlitem-money1' wx:if="{{cell.inORout==0}}"  style="color:rgb(42, 175, 80)">
+              {{cell.amount}}
+            </view>
+            <view class='dlitem-money2' wx:if="{{cell.inORout==1}}"  style="color:black">
               {{cell.amount}}
             </view>
           </view>
