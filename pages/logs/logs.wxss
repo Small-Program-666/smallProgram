@@ -153,8 +153,8 @@
   color: #959595;
 }
 .dlitem-tagremark {
-  color: #959595;
-  font-size: 13px;
+  color: #646363;
+  font-size: 17px;
 }
 .dlitem-money1 {
   float: right;
