@@ -37,8 +37,6 @@
   <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar4" ec="{{ ec4 }}"></ec-canvas>
 </view>
 
-<view>
-  <button class="add" bindtap="jumpToIndex">
-    <image class="add-pic" mode="aspectFill" src="../index/01.png"></image>
-  </button>
+<view class='add'>
+    <image class='add-pic' bindtap="jumpToIndex" src='/images/add2.jpg'></image>
 </view>
