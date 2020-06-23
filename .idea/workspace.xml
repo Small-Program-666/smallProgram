@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2209188b-cc71-47e9-9e66-17f464f024a3" name="默认" comment="">
+    <list default="true" id="2209188b-cc71-47e9-9e66-17f464f024a3" name="默认" comment="编辑界面输入金额出现的bug，以及总记账笔数bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/logs/details.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/logs/details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/chart-try/chart-try.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/chart-try/chart-try.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/chart-try/chart-try.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/chart-try/chart-try.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/statistics/statistics.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/statistics/statistics.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/statistics/statistics.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/statistics/statistics.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/users.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/users.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/users.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/users.wxss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,12 +119,20 @@
       <updated>1592743875388</updated>
       <workItem from="1592743877869" duration="246000" />
       <workItem from="1592795632441" duration="47000" />
-      <workItem from="1592893076783" duration="740000" />
+      <workItem from="1592893076783" duration="1363000" />
     </task>
+    <task id="LOCAL-00001" summary="编辑界面输入金额出现的bug，以及总记账笔数bug">
+      <created>1592894211286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592894211286</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1689000" />
+    <option name="totallyTimeSpent" value="2312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1213" height="773" extended-state="6" />
@@ -201,6 +212,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="编辑界面输入金额出现的bug，以及总记账笔数bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="编辑界面输入金额出现的bug，以及总记账笔数bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pages/index/index.js">
