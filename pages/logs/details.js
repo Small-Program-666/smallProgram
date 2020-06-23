@@ -94,7 +94,7 @@ Page({
     wx.setStorageSync('bills', bills)
     if(!e.mut){wx.navigateBack({})}
     var totalItem = wx.getStorageSync('totalItem')
-    wx.setStorageSync('totalItem', totalItem - 1)
+    wx.setStorageSync('totalItem', Number(totalItem) - 1)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

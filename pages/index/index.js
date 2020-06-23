@@ -263,7 +263,9 @@ Page({
          incomeOrNot:defaultInfo.inORout==0?1:0,
          outcomeOrNot:defaultInfo.inORout==1?1:0,
          currentType:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].type:this.data.outcome[defaultInfo.selectIndex].type,
-         currentIcon:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].icon:this.data.outcome[defaultInfo.selectIndex].icon
+         currentIcon:defaultInfo.inORout==0?this.data.income[defaultInfo.selectIndex].icon:this.data.outcome[defaultInfo.selectIndex].icon,
+         numberOfDot:1,
+         numberOfNumAfterDot:2
       })
       console.log("id:"+this.data.id)
       this.changeNumToVis()
@@ -422,7 +424,7 @@ Page({
       bills.sort(compareDate("date"));
       }
     var totalItem = wx.getStorageSync('totalItem')
-    wx.setStorageSync('totalItem', totalItem + 1)
+    wx.setStorageSync('totalItem', Number(totalItem) + 1)
     wx.setStorageSync('bills', bills);
     wx.switchTab({
       url: '../logs/logs',
@@ -461,7 +463,7 @@ Page({
     }
     wx.setStorageSync('bills', bills)
     var totalItem = wx.getStorageSync('totalItem')
-    wx.setStorageSync('totalItem', totalItem - 1)
+    wx.setStorageSync('totalItem', Number(totalItem) - 1)
   },
   inputRemark: function (e) {
     this.setData({
