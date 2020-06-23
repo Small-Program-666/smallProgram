@@ -4,5 +4,5 @@
 </view>
 
 <view class='add'>
-    <image class='add-pic' bindtap="jumpToIndex" src='/images/add2.jpg'></image>
+    <image class='add-pic' bindtap="jumpToIndex" src='/images/add2.png'></image>
 </view>

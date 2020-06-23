@@ -47,11 +47,16 @@ function initChart1(canvas, width, height) {//收入的扇形图
     }else{break;}
   }
   var option1 = {
+  legend: {
+      orient: 'vertical',
+      left: 10,
+      data: ['工资', '兼职', '理财', '礼金', '奖金','补助','分红','其他']
+  },
     series: [
       {
         label:{
           normal:{
-            fontSize:15,
+            show:false
           }
         },
         name: '收入',
@@ -61,7 +66,7 @@ function initChart1(canvas, width, height) {//收入的扇形图
         silent: true,
         labelLine: {
           normal: {
-            show: true,
+            show: false,
           }
         },
         data: [
@@ -74,7 +79,7 @@ function initChart1(canvas, width, height) {//收入的扇形图
           {name:'分红',value:fenhong},
           {name:'其他',value:qita},
         ],
-        color: ["#3878A4", "#81AAAE","#EBCFC4","#FDB8A8","#E3929B","#7D7294","#3878A4", "#81AAAE"]
+        color: ["#3878A4", "#81AAAE","#EBCFC4","#FDB8A8","#E3929B","#7D7294","#939DA7", "#C5C7B1"]
       }
     ]
   }
@@ -124,11 +129,16 @@ function initChart2(canvas, width, height) {//支出的扇形图
     }else{break;}
   }
   var option1 = {
+    legend: {
+        orient: 'vertical',
+        left: 10,
+        data: ['食物', '购物', '学习', '娱乐', '家庭', '生活', '出行', '其它']
+    },
     series: [
       {
         label:{
           normal:{
-            fontSize:15,
+            show:false,
           }
         },
         name: '支出',
@@ -138,7 +148,7 @@ function initChart2(canvas, width, height) {//支出的扇形图
         silent: true,
         labelLine: {
           normal: {
-            show: true
+            show: false
           }
         },
         data: [
