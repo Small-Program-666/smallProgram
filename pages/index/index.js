@@ -17,7 +17,7 @@ Page({
     accountIndex: 0,//选择的账本index
     outcome: [
       {
-        icon: '/images/icon/eating1.png',
+        icon:'https://6275-bugu-e06bq-1302301556.tcb.qcloud.la/image/icon/eating1.png?sign=be2e0a1f674852fd9e350d251c443dc9&t=1593014133',
         type: '餐饮',
         id: 0
       },
@@ -234,6 +234,7 @@ Page({
 
     showOrNot:0, //控制记账成功后的弹窗
   },
+  
   onLoad: function (options) {
     if(options.bdetail==undefined){
       this.setData({
@@ -283,6 +284,7 @@ Page({
       console.log("id:"+this.data.id)
     }
   },
+
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -313,6 +315,7 @@ Page({
     this.setData({
       currentIcon: this.data.income[0].icon,
       currentType: this.data.income[0].type,
+      selectIndex:0,
       type: 0,
       incomeOrNot: 1,
       outcomeOrNot: 0,
@@ -323,6 +326,7 @@ Page({
     this.setData({
       currentIcon:this.data.outcome[0].icon,
       currentType:this.data.outcome[0].type,
+      selectIndex:0,
       type: 1,
       outcomeOrNot: 1,
       incomeOrNot: 0,

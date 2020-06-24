@@ -2,7 +2,7 @@
 <!--基于xml的微信标记语言，定义页面结构-->
 <!---->
 <view>
-    <image style="width:100%;height:100%;" class="backg" src="/bg/8.jpeg"></image>
+    <image style="width:100%;height:100%;" class="backg" src="https://6275-bugu-e06bq-1302301556.tcb.qcloud.la/image/bg/8.jpeg?sign=8c857cc5ed033a34f2e346ee2699efb1&t=1593014440"></image>
     <button wx:if="{{ incomeOrNot==0 }}" class="income" style="background-color:rgb(255,255,240)"
             bindtap="changeToIncome">
         收入

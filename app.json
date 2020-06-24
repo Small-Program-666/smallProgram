@@ -1,11 +1,23 @@
 {
   "pages": [
     "pages/logs/logs",
-    "pages/budget/budget",
     "pages/chart-try/chart-try",
-    "pages/index/index",
-    "pages/users/users",
-    "pages/logs/details"
+    "pages/users/users"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/details/details"
+      ]
+    },
+    {
+      "root": "packageB",
+      "name": "pack2",
+      "pages": [
+        "pages/index/index"
+      ]
+    }
   ],
   "window": {
     "navigationBarBackgroundColor": "#EDEDF9",

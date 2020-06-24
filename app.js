@@ -5,6 +5,9 @@ var obj={
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    wx.cloud.init({
+      env:"6275-bugu-e06bq-1302301556"
+    })
 
     // 登录
     wx.login({
