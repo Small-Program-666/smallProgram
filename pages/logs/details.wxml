@@ -1,17 +1,17 @@
 <!--pages/logs/details.wxml-->
 <view class='head'>
   <view class='head-left'>
-    <view class='iconfont-box headimg'><!--获取detailtagbackground功能 style='background-color: {{detail.tagbg}}'-->
-      <label class='icon'></label><!-- class='iconfont {{detail.tagimg}}'-->
+    <view class='iconfont-box headimg'>
+      <label class='icon'></label>
       <image src="{{icon}}"></image>
     </view>
   </view>  
   <view class='head-right'>
     <view class='headtagname'>
-      {{type}}<!--获取{{detail.tag}}-->
+      {{type}}
     </view>
     <view class='headmoney'>
-      {{amount}}<!--获取{{detail.money}}-->
+      {{amount}}
     </view>
   </view>
 </view>
@@ -29,7 +29,7 @@
       类型
     </view>
     <view class='detail-item-right'>
-      {{inORout}}<!--{{detail.type}}-->
+      {{inORout}}
     </view>
   </view>
   <view class='detail-item'>
@@ -37,7 +37,7 @@
       金额
     </view>
     <view class='detail-item-right'>
-      {{amount}}<!--{{detail.money}}-->
+      {{amount}}
     </view>
   </view>
   <view class='detail-item'>
@@ -53,7 +53,7 @@
       记录时间
     </view>
     <view class='detail-item-right'>
-      {{datetime}}<!--{{detail.createtime}}-->
+      {{datetime}}
     </view>
   </view>
   <view class='detail-item'>
@@ -74,7 +74,7 @@
   </view>
   <view class='btnitem2'>
     <button bindtap="updatewater" class='btnsive' hover-class="btnsive-hover" data-bdetail='{{bdetail}}'>
-      编辑<!--updatewater待实现-->
+      编辑
     </button>
   </view>
 </view>

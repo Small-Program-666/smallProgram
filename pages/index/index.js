@@ -221,7 +221,7 @@ Page({
     idd: ".",
     ids: "保存",
     numberOfDot: 0,
-    accounts: ["支付宝", "微信", "现金"],
+    accounts: ["支付宝", "微信","银行卡", "现金"],
     dayIn:0,
     dayOut:0,
     dailyb:[],
