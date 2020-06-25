@@ -62,17 +62,6 @@
   border-width: 10rpx;
   border-color: rgb(252, 198, 150);
 }
-.add{
-  position: fixed;
-  text-align: center;
-  bottom: 0px;
-  width: 100%;
-}
-
-.add .add-pic{
-  width: 40px;
-  height: 40px;
-}
 
 
 .chart{
