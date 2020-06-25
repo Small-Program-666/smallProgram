@@ -33,7 +33,7 @@
         "iconPath": "images/calendar1.png",
         "selectedIconPath": "images/calendar.png",
         "pagePath": "pages/logs/logs",
-        "text": "账户"
+        "text": "明细"
       },
       {
         "iconPath": "images/data1.png",
